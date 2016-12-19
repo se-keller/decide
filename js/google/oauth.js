@@ -5,6 +5,8 @@
 
       var SCOPES = ["https://www.googleapis.com/auth/spreadsheets"];
 
+      checkAuth();
+      
       /**
        * Check if current user has authorized this application.
        */
