@@ -56,13 +56,14 @@ console.log("oauth ready");
       function loadSheetsApi() {
         var discoveryUrl =
             'https://sheets.googleapis.com/$discovery/rest?version=v4';
-        gapi.client.load(discoveryUrl);
+        gapi.client.load(discoveryUrl).then(function() {console.log("Loaded")});
+
       }
 
 
 
 
-	
+
   $('#txtarea-consent-proposal').on('input propertychange paste', function() {
       if($('#txtarea-consent-proposal').val()==="") {
         $('#btn-consent-proposal-accept').addClass("disabled")
@@ -74,7 +75,6 @@ console.log("oauth ready");
   });
 
   $('#btn-consent-proposal-accept').click(function(){
-  	checkAuth();
   	gapi.client.sheets.spreadsheets.values.append({
           spreadsheetId: '1bsPVDw_DKoByu3_y8bn3pQ_VAF8Mr8QJA5pcZIZATpI',
           range: 'Sheet1!A:Z',
