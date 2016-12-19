@@ -8,4 +8,11 @@ $(document).ready(function() {
         $('#btn-consent-proposal-agree').removeClass("disabled")  
       }
   });
+
+  $('#btn-consent-proposal-accept').click(function(){
+  	console.log(generateUUID())
+  });
+  $('#btn-consent-proposal-agree').click(function(){
+  	console.log(generateUUID())
+  });
 });
