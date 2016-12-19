@@ -1,4 +1,5 @@
     $(document).ready(function() {
+      console.log("oauth ready");
       // Your Client ID can be retrieved from your project in the Google
       // Developer Console, https://console.developers.google.com
       var CLIENT_ID = '847560978980-gj7ac8oo7h5spk4uupdko3j865aon6hu.apps.googleusercontent.com';
@@ -6,11 +7,12 @@
       var SCOPES = ["https://www.googleapis.com/auth/spreadsheets"];
 
       checkAuth();
-      
+
       /**
        * Check if current user has authorized this application.
        */
       function checkAuth() {
+        console.log("check Auth");
         gapi.auth.authorize(
           {
             'client_id': CLIENT_ID,
