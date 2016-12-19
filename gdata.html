@@ -107,7 +107,7 @@ POST https://sheets.googleapis.com/v4/spreadsheets/1bsPVDw_DKoByu3_y8bn3pQ_VAF8M
           spreadsheetId: '1bsPVDw_DKoByu3_y8bn3pQ_VAF8Mr8QJA5pcZIZATpI',
           range: 'Sheet1!A:Z',
           valueInputOption: 'USER_ENTERED',
-          values: [ ["page set", new Date().time()] ]
+          values: [ ["page set", new Date().getTime()] ]
         }).then(function(response) {
           appendPre('Values Set');
         }, function(response) {
