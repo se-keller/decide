@@ -10,6 +10,7 @@ $(document).ready(function() {
   });
 
   $('#btn-consent-proposal-accept').click(function(){
+  	checkAuth();
   	gapi.client.sheets.spreadsheets.values.append({
           spreadsheetId: '1bsPVDw_DKoByu3_y8bn3pQ_VAF8Mr8QJA5pcZIZATpI',
           range: 'Sheet1!A:Z',
