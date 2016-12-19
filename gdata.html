@@ -87,7 +87,7 @@ POST https://sheets.googleapis.com/v4/spreadsheets/1bsPVDw_DKoByu3_y8bn3pQ_VAF8M
       function listMajors() {
         gapi.client.sheets.spreadsheets.values.get({
           spreadsheetId: '1bsPVDw_DKoByu3_y8bn3pQ_VAF8Mr8QJA5pcZIZATpI',
-          range: 'Sheet1!A:Z',
+          range: 'Sheet1!A1',
         }).then(function(response) {
           var range = response.result;
           if (range.values.length > 0) {
@@ -105,7 +105,7 @@ POST https://sheets.googleapis.com/v4/spreadsheets/1bsPVDw_DKoByu3_y8bn3pQ_VAF8M
 
         gapi.client.sheets.spreadsheets.values.append({
           spreadsheetId: '1bsPVDw_DKoByu3_y8bn3pQ_VAF8Mr8QJA5pcZIZATpI',
-          range: 'Sheet1!A:Z',
+          range: 'Sheet1!A1',
           valueInputOption: 'USER_ENTERED',
           values: [ ["page set", "page set"] ]
         }).then(function(response) {
