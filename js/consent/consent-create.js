@@ -10,7 +10,16 @@ $(document).ready(function() {
   });
 
   $('#btn-consent-proposal-accept').click(function(){
-  	console.log(generateUUID())
+  	gapi.client.sheets.spreadsheets.values.append({
+          spreadsheetId: '1bsPVDw_DKoByu3_y8bn3pQ_VAF8Mr8QJA5pcZIZATpI',
+          range: 'Sheet1!A:Z',
+          valueInputOption: 'USER_ENTERED',
+          values: [ [generateUUID()] ]
+    }).then(function(response) {
+		console.log('Values Set');
+	}, function(response) {
+		console.log('Error: ' + response.result.error.message);
+	});
   });
   $('#btn-consent-proposal-agree').click(function(){
   	console.log(generateUUID())
