@@ -87,7 +87,7 @@ POST https://sheets.googleapis.com/v4/spreadsheets/1bsPVDw_DKoByu3_y8bn3pQ_VAF8M
       function listMajors() {
         gapi.client.sheets.spreadsheets.values.get({
           spreadsheetId: '1bsPVDw_DKoByu3_y8bn3pQ_VAF8Mr8QJA5pcZIZATpI',
-          range: 'Sheet1!A1:B1000',
+          range: 'Sheet1!A:Z',
         }).then(function(response) {
           var range = response.result;
           if (range.values.length > 0) {
