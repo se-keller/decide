@@ -26,9 +26,13 @@ $(document).ready(function() {
 		);
 	}
 
- 	function handleAuthResult() {
-		var discoveryUrl = 'https://sheets.googleapis.com/$discovery/rest?version=v4';
-    	gapi.client.load(discoveryUrl).then(createConsent);
+ 	function handleAuthResult(authResult) {
+ 		if(athResult && !authResult.error) {
+			var discoveryUrl = 'https://sheets.googleapis.com/$discovery/rest?version=v4';
+    		gapi.client.load(discoveryUrl).then(createConsent);
+    	} else {
+    		console.log(authResult.error);
+    	}
   	}
 
 	function createConsent() {
