@@ -27,7 +27,7 @@ $(document).ready(function() {
 	}
 
  	function handleAuthResult(authResult) {
- 		if(athResult && !authResult.error) {
+ 		if(authResult && !authResult.error) {
 			var discoveryUrl = 'https://sheets.googleapis.com/$discovery/rest?version=v4';
     		gapi.client.load(discoveryUrl).then(createConsent);
     	} else {
