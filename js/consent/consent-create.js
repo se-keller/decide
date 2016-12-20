@@ -13,6 +13,10 @@ $(document).ready(function() {
 
   
 	$('#btn-consent-proposal-accept').click(function(){
+		authorize()
+	});
+
+	function authorize() {
 		gapi.auth.authorize({
 			client_id: '847560978980-gj7ac8oo7h5spk4uupdko3j865aon6hu.apps.googleusercontent.com', 
 			scope: "https://www.googleapis.com/auth/spreadsheets", 
@@ -20,7 +24,7 @@ $(document).ready(function() {
 		},
 			handleAuthResult
 		);
-	});
+	}
 
  	function handleAuthResult() {
 		var discoveryUrl = 'https://sheets.googleapis.com/$discovery/rest?version=v4';
