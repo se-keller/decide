@@ -6,7 +6,7 @@ function OAuth() {
   var DISCOVERY_URL = ["https://sheets.googleapis.com/$discovery/rest?version=v4", "https://people.googleapis.com/$discovery/rest?version=v1"]
   var API_KEY = 'AIzaSyDbR2kJv9QUCbSRPOPt3R7v31NCquDEz7w';
   var instance = this;
-  console.log("- userinfo 1");
+  console.log("- userinfo 2 response");
 
   this.start = function() {
     gapi.load('client:auth2', initClient);
@@ -18,7 +18,7 @@ function OAuth() {
         discoveryDocs: DISCOVERY_URL,
         clientId: CLIENT_ID,
         scope: SCOPES
-    }).then(function () {
+    }).then(function (response) {
       var signedIn = gapi.auth2.getAuthInstance().isSignedIn.get();
       if(!signedIn) {
         gapi.auth2.getAuthInstance().signIn().then(
@@ -31,7 +31,8 @@ function OAuth() {
           });
       } else {
         createConsent()
-        console.log("blub: " + JSON.stringify(gapi.auth2))
+        console.log("auth2: " + JSON.stringify(gapi.auth2))
+        console.log("response: " + JSON.stringify(response))
         getUserInfo(gapi.auth2)
       }
     });
