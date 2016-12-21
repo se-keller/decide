@@ -1,14 +1,18 @@
 function OAuth() {
 
+  var isAuthorized = false;
 
   this.authorize = function() {
-    gapi.auth.authorize({
-      client_id: '847560978980-gj7ac8oo7h5spk4uupdko3j865aon6hu.apps.googleusercontent.com', 
-      scope: "https://www.googleapis.com/auth/spreadsheets", 
-      immediate: false
-    },
-      handleAuthResult
-    );
+    if(!authorized)
+      gapi.auth.authorize({
+        client_id: '847560978980-gj7ac8oo7h5spk4uupdko3j865aon6hu.apps.googleusercontent.com', 
+        scope: "https://www.googleapis.com/auth/spreadsheets", 
+        immediate: false
+      },
+        handleAuthResult
+      );
+    else
+      createConsent();
   }
 
   var handleAuthResult = function(authResult) {
