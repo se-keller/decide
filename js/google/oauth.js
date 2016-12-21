@@ -4,10 +4,28 @@ function OAuth() {
   var CLIENT_ID = '847560978980-gj7ac8oo7h5spk4uupdko3j865aon6hu.apps.googleusercontent.com';
   var SCOPES = 'https://www.googleapis.com/auth/spreadsheets'
   var DISCOVERY_URL = 'https://sheets.googleapis.com/$discovery/rest?version=v4'
+  var API_KEY = 'AIzaSyDbR2kJv9QUCbSRPOPt3R7v31NCquDEz7w';
   var instance = this;
+  console.log("- 7")
 
+  this.start = function() {
+    gapi.load('client:auth2', initClient);
+  }
+
+  var initClient = function() {
+    gapi.client.init({
+        apiKey: API_KEY,
+        discoveryDocs: DISCOVERY_URL,
+        clientId: CLIENT_ID,
+        scope: SCOPES
+    }).then(function () {
+      console.log(gapi.auth2.getAuthInstance().isSignedIn.get());
+    });
+  }
+
+  // ALTERNATIVE
   this.authorize = function() {
-    console.log("- 1")
+    
     console.log(authorized)
       gapi.auth.authorize({
         client_id: CLIENT_ID, 

@@ -16,7 +16,7 @@ $(document).ready(function() {
 
   
 	$('#btn-consent-proposal-accept').click(function(){
-		oauth.authorize();
+		oauth.start();
 	});
 
 	
