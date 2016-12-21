@@ -6,7 +6,7 @@ function OAuth() {
   var DISCOVERY_URL = ["https://sheets.googleapis.com/$discovery/rest?version=v4", "https://people.googleapis.com/$discovery/rest?version=v1"]
   var API_KEY = 'AIzaSyDbR2kJv9QUCbSRPOPt3R7v31NCquDEz7w';
   var instance = this;
-  console.log("- 13");
+  console.log("- 1");
 
   this.start = function() {
     gapi.load('client:auth2', initClient);
@@ -25,7 +25,7 @@ function OAuth() {
           function(response){
             console.log("Success");
           }, function(response){
-            console.log('Error: ' + response.result.error.message);
+            console.log('Error: ' + response.result);
           });
     });
   }
