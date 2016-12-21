@@ -3,32 +3,32 @@ function OAuth() {
   var authorized = true;
 
   this.authorize = function() {
-    console.log("- 2")
+    console.log("- 1")
       gapi.auth.authorize({
         client_id: '847560978980-gj7ac8oo7h5spk4uupdko3j865aon6hu.apps.googleusercontent.com', 
         scope: "https://www.googleapis.com/auth/spreadsheets", 
-        immediate: authorized
+        immediate: this.authorized
       },
         handleAuthResult
       );
   }
 
-  var handleAuthResult = function(authResult) {
+  this.handleAuthResult = function(authResult) {
     if(authResult && !authResult.error) {
       var discoveryUrl = 'https://sheets.googleapis.com/$discovery/rest?version=v4';
         gapi.client.load(discoveryUrl).then(createConsent);
-        authorized = true;
+        this.authorized = true;
     } else {
       console.log(authResult.error);
       if(authorized) {
-        authorized = false;
-        authorize();
+        this.authorized = false;
+        this.authorize();
       }
       
     }
   }
 
-  var createConsent = function() {
+  this.createConsent = function() {
       gapi.client.sheets.spreadsheets.values.append({
             spreadsheetId: '1bsPVDw_DKoByu3_y8bn3pQ_VAF8Mr8QJA5pcZIZATpI',
             range: 'Sheet1!A:Z',
