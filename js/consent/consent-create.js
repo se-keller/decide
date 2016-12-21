@@ -40,7 +40,7 @@ $(document).ready(function() {
 	          spreadsheetId: '1bsPVDw_DKoByu3_y8bn3pQ_VAF8Mr8QJA5pcZIZATpI',
 	          range: 'Sheet1!A:Z',
 	          valueInputOption: 'USER_ENTERED',
-	          values: [ [generateUUID(), new Date().getTime()] ]
+	          values: [ [generateUUID(), new Date()] ]
 	        }).then(function(response) {
 	          console.log("Success")
 	        }, function(response) {
