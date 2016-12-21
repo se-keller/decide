@@ -37,11 +37,9 @@ function OAuth() {
   }
 
   var getUserInfo = function() {
+    var gProfile = new GProfile()
     var profile = gapi.auth2.getAuthInstance().currentUser.get().getBasicProfile();
-    console.log('ID: ' + profile.getId());
-    console.log('Full Name: ' + profile.getName());
-    console.log('Given Name: ' + profile.getGivenName());
-    console.log('Family Name: ' + profile.getFamilyName());
+    console.log('Given Name: ' + gProfile.givenName());
     console.log('Image URL: ' + profile.getImageUrl());
     console.log('Email: ' + profile.getEmail());
   }
