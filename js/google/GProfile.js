@@ -9,7 +9,7 @@ function GProfile() {
 		return profile.getEmail()
 	}
 
-	this.imageURL = function() {
+	this.imageUrl = function() {
 		return profile.getImageUrl()
 	}
 
