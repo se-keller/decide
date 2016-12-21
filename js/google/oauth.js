@@ -2,11 +2,11 @@ function OAuth() {
 
   var authorized = true;
   var CLIENT_ID = '847560978980-gj7ac8oo7h5spk4uupdko3j865aon6hu.apps.googleusercontent.com';
-  var SCOPES = 'https://www.googleapis.com/auth/spreadsheets'
+  var SCOPES = 'people https://www.googleapis.com/auth/spreadsheets'
   var DISCOVERY_URL = ["https://sheets.googleapis.com/$discovery/rest?version=v4"]
   var API_KEY = 'AIzaSyDbR2kJv9QUCbSRPOPt3R7v31NCquDEz7w';
   var instance = this;
-  console.log("- 1")
+  console.log("- 11")
 
   this.start = function() {
     gapi.load('client:auth2', initClient);
@@ -21,7 +21,12 @@ function OAuth() {
     }).then(function () {
       var signedIn = gapi.auth2.getAuthInstance().isSignedIn.get();
       if(!signedIn)
-        gapi.auth2.getAuthInstance().signIn();
+        gapi.auth2.getAuthInstance().signIn().then(
+          function(response){
+            console.log("Success");
+          }, function(response){
+            console.log('Error: ' + response.result.error.message);
+          });
     });
   }
 
