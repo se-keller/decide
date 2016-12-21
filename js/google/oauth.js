@@ -19,9 +19,11 @@ function OAuth() {
     if(authResult && !authResult.error) {
       var discoveryUrl = 'https://sheets.googleapis.com/$discovery/rest?version=v4';
         gapi.client.load(discoveryUrl).then(createConsent);
-      } else {
-        console.log(authResult.error);
-      }
+        authorized = true;
+    } else {
+      console.log(authResult.error);
+      authorized = false;
+    }
     }
 
   var createConsent = function() {
