@@ -26,7 +26,7 @@ function OAuth() {
             console.log("Log in successful")
             console.log(JSON.stringify(response))
             createConsent()
-            getUserInfo()
+            getUserInfo(response)
           }, function(response){
             console.log('Could not log in')
           });
@@ -37,7 +37,7 @@ function OAuth() {
     });
   }
 
-  var getUserInfo = function() {
+  var getUserInfo = function(auth2) {
     var profile = auth2.currentUser.get().getBasicProfile();
     console.log('ID: ' + profile.getId());
     console.log('Full Name: ' + profile.getName());
