@@ -48,7 +48,7 @@ function OAuth() {
         }
         console.log(primaryEmail)
       });
-    }
+    });
   }
 
   // ALTERNATIVE
