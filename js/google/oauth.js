@@ -1,6 +1,6 @@
 function OAuth() {
 
-  var isAuthorized = false;
+  var authorized = false;
 
   this.authorize = function() {
     if(!authorized)
