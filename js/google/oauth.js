@@ -1,14 +1,17 @@
 function OAuth() {
 
   var authorized = true;
+  var CLIENT_ID = '847560978980-gj7ac8oo7h5spk4uupdko3j865aon6hu.apps.googleusercontent.com';
+  var SCOPES = 'https://www.googleapis.com/auth/spreadsheets'
+  var DISCOVERY_URL = 'https://sheets.googleapis.com/$discovery/rest?version=v4'
   var instance = this;
 
   this.authorize = function() {
-    console.log("- 10")
+    console.log("- 1")
     console.log(authorized)
       gapi.auth.authorize({
-        client_id: '847560978980-gj7ac8oo7h5spk4uupdko3j865aon6hu.apps.googleusercontent.com', 
-        scope: "https://www.googleapis.com/auth/spreadsheets", 
+        client_id: CLIENT_ID, 
+        scope: SCOPES, 
         immediate: authorized
       },
         handleAuthResult
@@ -17,7 +20,7 @@ function OAuth() {
 
   var handleAuthResult = function(authResult) {
     if(authResult && !authResult.error) {
-      var discoveryUrl = 'https://sheets.googleapis.com/$discovery/rest?version=v4';
+      var discoveryUrl = DISCOVERY_URL;
         gapi.client.load(discoveryUrl).then(createConsent);
         authorized = true;
     } else {
@@ -26,7 +29,6 @@ function OAuth() {
         authorized = false;
         instance.authorize();
       }
-      
     }
   }
 
