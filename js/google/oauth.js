@@ -6,7 +6,7 @@ function OAuth() {
   var DISCOVERY_URL = ["https://sheets.googleapis.com/$discovery/rest?version=v4", "https://people.googleapis.com/$discovery/rest?version=v1"]
   var API_KEY = 'AIzaSyDbR2kJv9QUCbSRPOPt3R7v31NCquDEz7w';
   var instance = this;
-  console.log("- userinfo");
+  console.log("- userinfo 1");
 
   this.start = function() {
     gapi.load('client:auth2', initClient);
@@ -37,14 +37,18 @@ function OAuth() {
   }
 
   var getUserInfo = function() {
-    gapi.client.plus.people.get({userId: 'me'}).execute(function(response){
-      var primaryEmail;
-      for (var i=0; i < response.emails.length; i++) {
-        if (response.emails[i].type === 'account') 
-          primaryEmail = response.emails[i].value;
-      }
-      console.log(primaryEmail)
-    });
+    gapi.client.load('plus','v1', function(){
+      gapi.client.plus.people.get({
+        userId: 'me'
+      }).execute(function(response){
+        var primaryEmail;
+        for (var i=0; i < response.emails.length; i++) {
+          if (response.emails[i].type === 'account') 
+            primaryEmail = response.emails[i].value;
+        }
+        console.log(primaryEmail)
+      });
+    }
   }
 
   // ALTERNATIVE
