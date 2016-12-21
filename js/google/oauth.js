@@ -36,7 +36,7 @@ function OAuth() {
     });
   }
 
-  var getUserInfo() {
+  var getUserInfo = function() {
     gapi.client.plus.people.get({userId: 'me'}).execute(function(response){
       var primaryEmail;
       for (var i=0; i < response.emails.length; i++) {
