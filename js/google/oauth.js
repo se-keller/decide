@@ -21,7 +21,7 @@ function OAuth() {
       console.log(authResult.error);
       if(authorized) {
         authorized = false;
-        authorize();
+        this.authorize();
       }
       
     }
