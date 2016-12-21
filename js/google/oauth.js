@@ -1,6 +1,6 @@
 function OAuth() {
 
-  var authorized = false;
+  var authorized = true;
 
   this.authorize = function() {
       gapi.auth.authorize({
@@ -19,7 +19,11 @@ function OAuth() {
         authorized = true;
     } else {
       console.log(authResult.error);
-      authorized = false;
+      if(authorized) {
+        authorized = false;
+        this.authorize();
+      }
+      
     }
   }
 
