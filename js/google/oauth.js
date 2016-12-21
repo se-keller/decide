@@ -3,11 +3,10 @@ function OAuth() {
   var authorized = false;
 
   this.authorize = function() {
-    if(!authorized)
       gapi.auth.authorize({
         client_id: '847560978980-gj7ac8oo7h5spk4uupdko3j865aon6hu.apps.googleusercontent.com', 
         scope: "https://www.googleapis.com/auth/spreadsheets", 
-        immediate: true
+        immediate: authorized
       },
         handleAuthResult
       );
