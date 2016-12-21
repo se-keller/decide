@@ -11,8 +11,10 @@ function OAuth() {
       },
         handleAuthResult
       );
-    else
+    else {
+      console.log("no need to authorize")
       createConsent();
+    }
   }
 
   var handleAuthResult = function(authResult) {
