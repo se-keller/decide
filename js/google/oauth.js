@@ -6,7 +6,7 @@ function OAuth() {
   var DISCOVERY_URL = ["https://sheets.googleapis.com/$discovery/rest?version=v4", "https://people.googleapis.com/$discovery/rest?version=v1"]
   var API_KEY = 'AIzaSyDbR2kJv9QUCbSRPOPt3R7v31NCquDEz7w';
   var instance = this;
-  console.log("- userinfo 2 response");
+  console.log("- userinfo party time?");
 
   this.start = function() {
     gapi.load('client:auth2', initClient);
@@ -18,28 +18,26 @@ function OAuth() {
         discoveryDocs: DISCOVERY_URL,
         clientId: CLIENT_ID,
         scope: SCOPES
-    }).then(function (response) {
+    }).then(function () {
       var signedIn = gapi.auth2.getAuthInstance().isSignedIn.get();
       if(!signedIn) {
         gapi.auth2.getAuthInstance().signIn().then(
           function(response){
             console.log("Log in successful")
             createConsent()
-            getUserInfo(gapi.auth2)
+            getUserInfo()
           }, function(response){
             console.log('Could not log in')
           });
       } else {
         createConsent()
-        console.log("auth2: " + JSON.stringify(gapi.auth2))
-        console.log("response: " + JSON.stringify(response))
-        getUserInfo(gapi.auth2)
+        getUserInfo()
       }
     });
   }
 
-  var getUserInfo = function(auth2) {
-    var profile = auth2.currentUser.get().getBasicProfile();
+  var getUserInfo = function() {
+    var profile = gapi.auth2.getAuthInstance().currentUser.get().getBasicProfile();
     console.log('ID: ' + profile.getId());
     console.log('Full Name: ' + profile.getName());
     console.log('Given Name: ' + profile.getGivenName());
