@@ -10,10 +10,6 @@ function OAuth() {
       },
         handleAuthResult
       );
-    else {
-      console.log("no need to authorize")
-      createConsent();
-    }
   }
 
   var handleAuthResult = function(authResult) {
@@ -25,7 +21,7 @@ function OAuth() {
       console.log(authResult.error);
       authorized = false;
     }
-    }
+  }
 
   var createConsent = function() {
       gapi.client.sheets.spreadsheets.values.append({
