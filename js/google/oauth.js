@@ -9,14 +9,14 @@ function OAuth() {
         scope: "https://www.googleapis.com/auth/spreadsheets", 
         immediate: this.authorized
       },
-        handleAuthResult
+        this.handleAuthResult
       );
   }
 
   this.handleAuthResult = function(authResult) {
     if(authResult && !authResult.error) {
       var discoveryUrl = 'https://sheets.googleapis.com/$discovery/rest?version=v4';
-        gapi.client.load(discoveryUrl).then(createConsent);
+        gapi.client.load(discoveryUrl).then(this.createConsent);
         this.authorized = true;
     } else {
       console.log(authResult.error);
