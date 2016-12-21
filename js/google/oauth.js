@@ -6,7 +6,7 @@ function OAuth() {
   var DISCOVERY_URL = ["https://sheets.googleapis.com/$discovery/rest?version=v4", "https://people.googleapis.com/$discovery/rest?version=v1"]
   var API_KEY = 'AIzaSyDbR2kJv9QUCbSRPOPt3R7v31NCquDEz7w';
   var instance = this;
-  console.log("- userinfo nice");
+  console.log("- userinfo not yet");
 
   this.start = function() {
     gapi.load('client:auth2', initClient);
@@ -37,7 +37,7 @@ function OAuth() {
   }
 
   var getUserInfo = function() {
-    var profile = gapi.auth2.currentUser.get().getBasicProfile();
+    var profile = auth2.currentUser.get().getBasicProfile();
     console.log('ID: ' + profile.getId());
     console.log('Full Name: ' + profile.getName());
     console.log('Given Name: ' + profile.getGivenName());
