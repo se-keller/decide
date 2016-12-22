@@ -1,7 +1,7 @@
 var oauth;
 
 $(document).ready(function() {
-  console.log("- refactoring 3");
+  console.log("- refactoring 4");
 	oauth = new OAuth(
     'AIzaSyDbR2kJv9QUCbSRPOPt3R7v31NCquDEz7w',
     '847560978980-gj7ac8oo7h5spk4uupdko3j865aon6hu.apps.googleusercontent.com'
