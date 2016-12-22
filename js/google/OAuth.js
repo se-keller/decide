@@ -5,7 +5,7 @@ function OAuth(apiKey, clientId) {
   var DISCOVERY_URL = ["https://sheets.googleapis.com/$discovery/rest?version=v4", "https://people.googleapis.com/$discovery/rest?version=v1"]
   var instance = this;
 
-  this.start = function(execute) {
+  this.login = function(execute) {
     gapi.load('client:auth2', function(){
       gapi.client.init({
         apiKey: apiKey,
@@ -18,13 +18,10 @@ function OAuth(apiKey, clientId) {
           gapi.auth2.getAuthInstance().signIn().then(
             function(response){
               console.log("Log in successful")
-              execute()
             }, function(response){
               console.log('Could not log in')
             });
-        } else {
-          execute()
-        }
+        } 
       });  
     });
   }
