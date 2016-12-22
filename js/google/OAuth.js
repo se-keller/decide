@@ -4,10 +4,29 @@ function OAuth(apiKey, clientId) {
   var SCOPES = 'https://www.googleapis.com/auth/spreadsheets profile'
   var DISCOVERY_URL = ["https://sheets.googleapis.com/$discovery/rest?version=v4", "https://people.googleapis.com/$discovery/rest?version=v1"]
   var instance = this;
-  console.log("- refactoring 2");
 
-  this.start = function() {
-    gapi.load('client:auth2', initClient);
+  this.start = function(execute) {
+    gapi.load('client:auth2', function(){
+      gapi.client.init({
+        apiKey: apiKey,
+        discoveryDocs: DISCOVERY_URL,
+        clientId: clientId,
+        scope: SCOPES
+      }).then(function () {
+        var signedIn = gapi.auth2.getAuthInstance().isSignedIn.get();
+        if(!signedIn) {
+          gapi.auth2.getAuthInstance().signIn().then(
+            function(response){
+              console.log("Log in successful")
+              execute()
+            }, function(response){
+              console.log('Could not log in')
+            });
+        } else {
+          execute()
+        }
+      });  
+    });
   }
 
   var initClient = function() {
