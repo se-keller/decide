@@ -46,7 +46,7 @@ function OAuth() {
   
 
   var createConsent = function() {
-      var gSheet = new GSheet('1bsPVDw_DKoByu3_y8bn3pQ_VAF8Mr8QJA5pcZIZATpI')
+      var gSheet = new GSheets('1bsPVDw_DKoByu3_y8bn3pQ_VAF8Mr8QJA5pcZIZATpI')
       gSheet.append([ [generateUUID(), new Date()] ])
       /*gapi.client.sheets.spreadsheets.values.append({
             spreadsheetId: '1bsPVDw_DKoByu3_y8bn3pQ_VAF8Mr8QJA5pcZIZATpI',
