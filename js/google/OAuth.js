@@ -1,12 +1,10 @@
-function OAuth() {
+function OAuth(apiKey, clientId) {
  
   var authorized = true;
-  var CLIENT_ID = '847560978980-gj7ac8oo7h5spk4uupdko3j865aon6hu.apps.googleusercontent.com';
   var SCOPES = 'https://www.googleapis.com/auth/spreadsheets profile'
   var DISCOVERY_URL = ["https://sheets.googleapis.com/$discovery/rest?version=v4", "https://people.googleapis.com/$discovery/rest?version=v1"]
-  var API_KEY = 'AIzaSyDbR2kJv9QUCbSRPOPt3R7v31NCquDEz7w';
   var instance = this;
-  console.log("- refactoring");
+  console.log("- refactoring 2");
 
   this.start = function() {
     gapi.load('client:auth2', initClient);
@@ -14,9 +12,9 @@ function OAuth() {
 
   var initClient = function() {
     gapi.client.init({
-        apiKey: API_KEY,
+        apiKey: apiKey,
         discoveryDocs: DISCOVERY_URL,
-        clientId: CLIENT_ID,
+        clientId: clientId,
         scope: SCOPES
     }).then(function () {
       var signedIn = gapi.auth2.getAuthInstance().isSignedIn.get();
@@ -48,17 +46,6 @@ function OAuth() {
   var createConsent = function() {
       var gSheet = new GSheets('1bsPVDw_DKoByu3_y8bn3pQ_VAF8Mr8QJA5pcZIZATpI')
       gSheet.append([ [generateUUID(), new Date()] ])
-      /*gapi.client.sheets.spreadsheets.values.append({
-            spreadsheetId: '1bsPVDw_DKoByu3_y8bn3pQ_VAF8Mr8QJA5pcZIZATpI',
-            range: 'Sheet1!A:Z',
-            valueInputOption: 'USER_ENTERED',
-            values: [ [generateUUID(), new Date()] ]
-          }).then(function(response) {
-            console.log("Success")
-          }, function(response) {
-            console.log('Error: ' + response.result.error.message);
-          });
-          */
-    }
+  }
 
 }
