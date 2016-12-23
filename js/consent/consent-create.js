@@ -2,7 +2,7 @@ var oauth;
 var uuidGenerator;
 
 $(document).ready(function() {
-  console.log("- fill 3")
+  console.log("- fill 4")
   uuidGenerator = new UUID()
 	oauth = new OAuth(
     'AIzaSyDbR2kJv9QUCbSRPOPt3R7v31NCquDEz7w',
@@ -30,6 +30,7 @@ $(document).ready(function() {
       var proposal = $('#txtarea-consent-proposal').val()
       var consent = new Consent(email, proposal)
       consent.accept()
+      consent.agreeCount++
       var gSheet = new GSheets('1bsPVDw_DKoByu3_y8bn3pQ_VAF8Mr8QJA5pcZIZATpI')
       gSheet.append([ [uuid, new Date(), email, JSON.stringify(consent)] ])
 
