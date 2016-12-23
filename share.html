@@ -20,7 +20,9 @@
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
     <script src="js/jquery-3.1.1.min.js"></script>
-
+		<script src="js/utils/UrlParamsDecoder.js"></script>
+		<script src="js/share/share.js"></script>
+		
   </head>
 
   <body>
@@ -43,7 +45,14 @@
       </div>
     </nav>
 
-		<div>Share</div>
+		<div class="container">
+        	<div class="create">
+            	<h2>Invite</h2>
+            	<p>The invite url is</p>
+            	<p id="invite-url"/>
+            </div>
+		</div>
+
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>

@@ -14,7 +14,7 @@ checkIfCreated() {
 	then
 		echo [DONE] $1 concatinated
 	else
-		echo [FAIL] coould not create $1
+		echo [FAIL] could not create $1
 	fi
 }
 
@@ -31,7 +31,7 @@ checkIfCreated $file
 
 file="../share.html"
 remove $file
-cat head.part.html close-head.part.html navigation.part.html share.part.html close-body.part.html > $file
+cat head.part.html share/scripts.part.html close-head.part.html navigation.part.html share/share.part.html close-body.part.html > $file
 checkIfCreated $file
 
 echo 
