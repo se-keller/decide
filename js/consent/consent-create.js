@@ -1,9 +1,9 @@
 var oauth;
-var uuid;
+var uuidGenerator;
 
 $(document).ready(function() {
-  console.log("- refactoring uuid")
-  uuid = new UUID()
+  console.log("- fill table with consent values")
+  uuidGenerator = new UUID()
 	oauth = new OAuth(
     'AIzaSyDbR2kJv9QUCbSRPOPt3R7v31NCquDEz7w',
     '847560978980-gj7ac8oo7h5spk4uupdko3j865aon6hu.apps.googleusercontent.com'
@@ -25,12 +25,14 @@ $(document).ready(function() {
 	$('#btn-consent-proposal-accept').click(function(){
 		  
       var gProfile = new GProfile()
-      console.log('Given Name: ' + gProfile.givenName())
-      console.log('Image URL: ' + gProfile.imageUrl())
-      console.log('Email: ' + gProfile.email())
+      var email = gProfile.email()
+      var uuid = uuidGenerator.generate()
+      var proposal = $('#txtarea-consent-proposal').val()
+      var consent = new Consent(email, proposal)
+      consent.accept()
 
       var gSheet = new GSheets('1bsPVDw_DKoByu3_y8bn3pQ_VAF8Mr8QJA5pcZIZATpI')
-      gSheet.append([ [uuid.generate(), new Date()] ])
+      gSheet.append([ [uuid.generate(), new Date(), email, JSON.stringify(consent)] ])
 
     
 	});
