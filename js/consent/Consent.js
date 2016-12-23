@@ -23,7 +23,7 @@ function Consent(creatorEmail, proposal) {
 		return instance.currentDecision
 	}
 
-	this.creator = fuction() {
+	this.creator = function() {
 		return instance.creator
 	}
 }
