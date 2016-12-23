@@ -2,7 +2,7 @@ var oauth;
 var uuidGenerator;
 
 $(document).ready(function() {
-  console.log("- fill table with consent values")
+  console.log("- fill 1")
   uuidGenerator = new UUID()
 	oauth = new OAuth(
     'AIzaSyDbR2kJv9QUCbSRPOPt3R7v31NCquDEz7w',
