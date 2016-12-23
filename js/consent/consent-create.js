@@ -2,7 +2,7 @@ var oauth;
 var uuidGenerator;
 
 $(document).ready(function() {
-  console.log("- fill 5")
+  console.log("- fill 6")
   uuidGenerator = new UUID()
 	oauth = new OAuth(
     'AIzaSyDbR2kJv9QUCbSRPOPt3R7v31NCquDEz7w',

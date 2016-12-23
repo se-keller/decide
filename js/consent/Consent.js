@@ -1,5 +1,5 @@
 function Consent(creatorEmail, proposal) {
-	this[agreeCount] = 0
+	this['agreeCount'] = 0
 	this.acceptCount = 0
 	this.currentDecision = proposal
 	this.creator = creatorEmail
