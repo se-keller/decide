@@ -4,4 +4,4 @@ $(document).ready(function() {
         var id = urlParamsDecoder.valueOf("id")
         $('#invite-url').text(window.location.origin + "/decide?id="+id)
     }
-}
+})
