@@ -19,11 +19,11 @@ function Consent(creatorEmail, proposal) {
 		instance.currentDecision = newProposal
 	}
 
-	this.currentDecision = function() {
+	this.getCurrentDecision = function() {
 		return instance.currentDecision
 	}
 
-	this.creator = function() {
+	this.getCreator = function() {
 		return instance.creator
 	}
 }
