@@ -10,20 +10,17 @@ $(document).ready(function() {
     )
   oauth.login()
 
-  	$('#txtarea-consent-proposal').on('input propertychange paste', function() {
-      if($('#txtarea-consent-proposal').val()==="") {
-        $('#btn-consent-proposal-accept').addClass("disabled")
-        $('#btn-consent-proposal-agree').addClass("disabled")  
-      } else {
-        $('#btn-consent-proposal-accept').removeClass("disabled")
-        $('#btn-consent-proposal-agree').removeClass("disabled")  
-      }
-  	});
-
-
+	$('#txtarea-consent-proposal').on('input propertychange paste', function() {
+    if($('#txtarea-consent-proposal').val()==="") {
+      $('#btn-consent-proposal-accept').addClass("disabled")
+      $('#btn-consent-proposal-agree').addClass("disabled")  
+    } else {
+      $('#btn-consent-proposal-accept').removeClass("disabled")
+      $('#btn-consent-proposal-agree').removeClass("disabled")  
+    }
+	});
   
 	$('#btn-consent-proposal-accept').click(function(){
-		  
       var gProfile = new GProfile()
       var email = gProfile.email()
       var uuid = uuidGenerator.generate()
@@ -33,14 +30,13 @@ $(document).ready(function() {
       consent.agreeCount++
       var gSheet = new GSheets('1bsPVDw_DKoByu3_y8bn3pQ_VAF8Mr8QJA5pcZIZATpI')
       gSheet.append([ [uuid, new Date(), email, JSON.stringify(consent)] ])
-
-    
+      window.location.href = 'share.html?id=' + uuid
 	});
 
-	
-
 	$('#btn-consent-proposal-agree').click(function(){
-  		console.log(uuidGenerator.generate())
+      var uuid = uuidGenerator.generate()
+  		console.log(uuid)
+      window.location.href = 'share.html?id=' + uuid
   	});
 
 });
