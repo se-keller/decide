@@ -1,7 +1,8 @@
-function Consent(creator, proposal) {
+function Consent(creatorEmail, proposal) {
 	this.agreeCount = 0
 	this.acceptCount = 0
 	this.currentDecision = proposal
+	this.creator = creatorEmail
 	var instance = this
 	
 	this.agree = function() {
@@ -20,5 +21,9 @@ function Consent(creator, proposal) {
 
 	this.currentDecision = function() {
 		return instance.currentDecision
+	}
+
+	this.creator = fuction() {
+		return instance.creator
 	}
 }
