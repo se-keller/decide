@@ -4,7 +4,7 @@ function OAuth(apiKey, clientId) {
   var SCOPES = 'https://www.googleapis.com/auth/spreadsheets profile'
   var DISCOVERY_URL = ["https://sheets.googleapis.com/$discovery/rest?version=v4", "https://people.googleapis.com/$discovery/rest?version=v1"]
 
-  this.login = function(execute) {
+  this.login = function() {
     gapi.load('client:auth2', function(){
       gapi.client.init({
         apiKey: apiKey,
