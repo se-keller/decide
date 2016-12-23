@@ -1,9 +1,9 @@
 var oauth;
-var uuidGenerator;
+var uuid;
 
 $(document).ready(function() {
   console.log("- refactoring uuid")
-  uuidGenerator = new UUIDGenerator()
+  uuid = new UUID()
 	oauth = new OAuth(
     'AIzaSyDbR2kJv9QUCbSRPOPt3R7v31NCquDEz7w',
     '847560978980-gj7ac8oo7h5spk4uupdko3j865aon6hu.apps.googleusercontent.com'
@@ -30,7 +30,7 @@ $(document).ready(function() {
       console.log('Email: ' + gProfile.email())
 
       var gSheet = new GSheets('1bsPVDw_DKoByu3_y8bn3pQ_VAF8Mr8QJA5pcZIZATpI')
-      gSheet.append([ [uuidGenerator.generate(), new Date()] ])
+      gSheet.append([ [uuid.generate(), new Date()] ])
 
     
 	});
@@ -38,7 +38,7 @@ $(document).ready(function() {
 	
 
 	$('#btn-consent-proposal-agree').click(function(){
-  		console.log(uuidGenerator.generate())
+  		console.log(uuid.generate())
   	});
 
 });
