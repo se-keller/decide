@@ -1,28 +1,29 @@
 function Consent(creatorEmail, proposal) {
-	var agreeCount = 0
-	var acceptCount = 0
-	var currentDecision = proposal
-	var creator = creatorEmail
+	this.agreeCount = 0
+	this.acceptCount = 0
+	this.currentDecision = proposal
+	this.creator = creatorEmail
+	var instance = this
 	
 	this.agree = function() {
-		agreeCount++
+		instance.agreeCount++
 	}
 	
 	this.accept = function() {
-		acceptCount++
+		instance.acceptCount++
 	}
 	
 	this.disagree = function(reason, newProposal) {
-		agreeCount = 0
-		acceptCount = 0
-		currentDecision = newProposal
+		instance.agreeCount = 0
+		instance.acceptCount = 0
+		instance.currentDecision = newProposal
 	}
 
 	this.getCurrentDecision = function() {
-		return currentDecision
+		return instance.currentDecision
 	}
 
 	this.getCreator = function() {
-		return creator
+		return instance.creator
 	}
 }
