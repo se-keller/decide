@@ -7,9 +7,11 @@ $(document).ready(function() {
         $('#invite-url').select()
     }
 
-    $('#btn-consent-proposal-accept').click(function(){
+    $('#btn-copy-to-clipboard').click(function(){
     	$('#invite-url').focus()
         $('#invite-url').select()
         var successful = document.execCommand('copy')
+        $('#invite-url').focus()
+        $('#invite-url').select()
     })
 })
