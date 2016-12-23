@@ -6,4 +6,10 @@ $(document).ready(function() {
         $('#invite-url').focus()
         $('#invite-url').select()
     }
+
+    $('#btn-consent-proposal-accept').click(function(){
+    	$('#invite-url').focus()
+        $('#invite-url').select()
+        var successful = document.execCommand('copy')
+    })
 })
