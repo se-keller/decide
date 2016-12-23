@@ -32,7 +32,7 @@ $(document).ready(function() {
       consent.accept()
 
       var gSheet = new GSheets('1bsPVDw_DKoByu3_y8bn3pQ_VAF8Mr8QJA5pcZIZATpI')
-      gSheet.append([ [uuid.generate(), new Date(), email, JSON.stringify(consent)] ])
+      gSheet.append([ [uuid, new Date(), email, JSON.stringify(consent)] ])
 
     
 	});
@@ -40,7 +40,7 @@ $(document).ready(function() {
 	
 
 	$('#btn-consent-proposal-agree').click(function(){
-  		console.log(uuid.generate())
+  		console.log(uuidGenerator.generate())
   	});
 
 });
