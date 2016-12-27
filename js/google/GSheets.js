@@ -23,8 +23,8 @@ function GSheets(spreadsheetId) {
           if (rowCount > 0) {
             for (i = 0; i < rowCount; i++) {
               var row = range.values[i];
-              console.log(row[0])
-              console.log(value)
+              console.log(row[column])
+              console.log(row[column] === value)
               if(row[column] === value)
               	return row
             }
