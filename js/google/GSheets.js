@@ -19,9 +19,11 @@ function GSheets(spreadsheetId) {
           range: 'Sheet1!A:Z',
         }).then(function(response) {
           var range = response.result;
-          if (range.values.length > 0) {
-            for (i = 0; i < range.values.length; i++) {
+          var rowCount = range.values.length
+          if (rowCount > 0) {
+            for (i = 0; i < rowCount; i++) {
               var row = range.values[i];
+              console.log(row)
               if(row[column] === value)
               	return row
             }
