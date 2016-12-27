@@ -2,7 +2,6 @@ var oauth;
 var uuidGenerator;
 
 $(document).ready(function() {
-  console.log("- create consent refactoring")
   uuidGenerator = new UUID()
 	oauth = new OAuth(
     'AIzaSyDbR2kJv9QUCbSRPOPt3R7v31NCquDEz7w',
