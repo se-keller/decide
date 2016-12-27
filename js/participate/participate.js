@@ -5,7 +5,7 @@ $(document).ready(function() {
     )
   	oauth.login()
 
-	console.log('Durchstich with id now 5')
+	console.log('Durchstich with id now 6')
 	
 
     $('#h-participate').click(function(){
