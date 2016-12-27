@@ -1,9 +1,10 @@
-function Consent(uuid, creatorEmail, proposal) {
-	this['agreeCount'] = 0
+function Consent() {
+	this.agreeCount = 0
 	this.acceptCount = 0
-	this.currentDecision = proposal
-	this.creator = creatorEmail
-	this.id = uuid
+	this.currentDecision = ''
+	this.creatorEMail = ''
+	this.uuid = ''
+	this.creationDate = new Date()
 	var instance = this
 	
 	this.agree = function() {

@@ -2,7 +2,7 @@ var oauth;
 var uuidGenerator;
 
 $(document).ready(function() {
-  console.log("- create consent refactoring 1")
+  console.log("- create consent refactoring")
   uuidGenerator = new UUID()
 	oauth = new OAuth(
     'AIzaSyDbR2kJv9QUCbSRPOPt3R7v31NCquDEz7w',
@@ -37,16 +37,17 @@ $(document).ready(function() {
 
 function createConsent() {
   var gProfile = new GProfile()
-  var email = gProfile.email()
-  var uuid = uuidGenerator.generate()
-  var proposal = $('#txtarea-consent-proposal').val()
-  var consent = new Consent(uuid, email, proposal)
+  var consent = new Consent()
+  consent.creatorEMail = gProfile.email()
+  consent.uuid = uuidGenerator.generate()
+  consent.currentDesition = $('#txtarea-consent-proposal').val()
+  consent.creationDate = new Date()
   return consent
 }
 
 function persist(consent) {
   var gSheet = new GSheets('1bsPVDw_DKoByu3_y8bn3pQ_VAF8Mr8QJA5pcZIZATpI')
-  gSheet.append([ [consent.uuid, new Date(), consent.email, JSON.stringify(consent)] ])
+  gSheet.append([ [consent.uuid, creationDate, consent.creatorEMail, JSON.stringify(consent)] ])
 }
 
 function share(consent) {
