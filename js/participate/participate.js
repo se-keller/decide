@@ -1,11 +1,5 @@
 $(document).ready(function() {
-	var oauth = new OAuth(
-    'AIzaSyDbR2kJv9QUCbSRPOPt3R7v31NCquDEz7w',
-    '847560978980-gj7ac8oo7h5spk4uupdko3j865aon6hu.apps.googleusercontent.com'
-    )
-  	oauth.login()
-
-	console.log('Durchstich with id now 6')
+	console.log('Durchstich with id now 7')
 	
 
     $('#h-participate').click(function(){
