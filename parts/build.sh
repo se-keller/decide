@@ -34,5 +34,10 @@ remove $file
 cat head.part.html share/scripts.part.html close-head.part.html navigation.part.html share/share.part.html close-body.part.html > $file
 checkIfCreated $file
 
+file="../participate.html"
+remove $file
+cat head.part.html participate/scripts.part.html close-head.part.html navigation.part.html participate/participate.part.html close-body.part.html > $file
+checkIfCreated $file
+
 echo 
 
