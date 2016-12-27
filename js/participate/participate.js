@@ -1,5 +1,11 @@
 $(document).ready(function() {
-	console.log('Durchstich')
+	var oauth = new OAuth(
+    'AIzaSyDbR2kJv9QUCbSRPOPt3R7v31NCquDEz7w',
+    '847560978980-gj7ac8oo7h5spk4uupdko3j865aon6hu.apps.googleusercontent.com'
+    )
+  	oauth.login()
+
+	console.log('Durchstich 2')
 	var urlParamsDecoder = new UrlParamsDecoder(window.location.href)
     if(urlParamsDecoder.hasParams()) {
         var id = urlParamsDecoder.valueOf("id")
