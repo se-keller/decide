@@ -5,7 +5,7 @@ $(document).ready(function() {
     )
   	oauth.login()
 
-	console.log('Durchstich 5')
+	console.log('Durchstich with id now')
 	
 
     $('#h-participate').click(function(){
@@ -13,7 +13,7 @@ $(document).ready(function() {
     	if(urlParamsDecoder.hasParams()) {
        		var id = urlParamsDecoder.valueOf("id")
         	var gSheet = new GSheets('1bsPVDw_DKoByu3_y8bn3pQ_VAF8Mr8QJA5pcZIZATpI')
-        	console.log(gSheet.append([ ['wunderlich'] ]))
+        	console.log(gSheet.findRow(0, id)
     	} 
 	});
 })
