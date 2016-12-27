@@ -35,12 +35,12 @@ $(document).ready(function() {
   });
 });
 
-function createConsent() {
+function createConsent() { 
   var gProfile = new GProfile()
   var consent = new Consent()
   consent.creatorEMail = gProfile.email()
   consent.uuid = uuidGenerator.generate()
-  consent.currentDesition = $('#txtarea-consent-proposal').val()
+  consent.currentDecision = $('#txtarea-consent-proposal').val()
   consent.creationDate = new Date()
   return consent
 }
