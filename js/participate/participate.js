@@ -5,11 +5,15 @@ $(document).ready(function() {
     )
   	oauth.login()
 
-	console.log('Durchstich 3')
-	var urlParamsDecoder = new UrlParamsDecoder(window.location.href)
-    if(urlParamsDecoder.hasParams()) {
-        var id = urlParamsDecoder.valueOf("id")
-        var gSheet = new GSheets('1bsPVDw_DKoByu3_y8bn3pQ_VAF8Mr8QJA5pcZIZATpI')
-        console.log(gSheet.appen(gSheet.append([ ['wunderlich'] ])))
-    } 
+	console.log('Durchstich 5')
+	
+
+    $('#h-participate').click(function(){
+	    var urlParamsDecoder = new UrlParamsDecoder(window.location.href)
+    	if(urlParamsDecoder.hasParams()) {
+       		var id = urlParamsDecoder.valueOf("id")
+        	var gSheet = new GSheets('1bsPVDw_DKoByu3_y8bn3pQ_VAF8Mr8QJA5pcZIZATpI')
+        	console.log(gSheet.append([ ['wunderlich'] ]))
+    	} 
+	});
 })
