@@ -2,7 +2,7 @@ var oauth;
 var uuidGenerator;
 
 $(document).ready(function() {
-  console.log("- create consent refactoring")
+  console.log("- create consent refactoring 1")
   uuidGenerator = new UUID()
 	oauth = new OAuth(
     'AIzaSyDbR2kJv9QUCbSRPOPt3R7v31NCquDEz7w',
@@ -23,14 +23,14 @@ $(document).ready(function() {
 	$('#btn-consent-proposal-accept').click(function(){
     var consent = createConsent()
     consent.accept()
-    persistConsent(consent)
+    persist(consent)
     share(consent)
 	});
 
 	$('#btn-consent-proposal-agree').click(function(){
     var consent = createConsent()
     consent.agree()
-    persistConsent(consent)
+    persist(consent)
     share(consent)
   });
 });
@@ -44,11 +44,11 @@ function createConsent() {
   return consent
 }
 
-function persistConsent(consent) {
+function persist(consent) {
   var gSheet = new GSheets('1bsPVDw_DKoByu3_y8bn3pQ_VAF8Mr8QJA5pcZIZATpI')
   gSheet.append([ [consent.uuid, new Date(), consent.email, JSON.stringify(consent)] ])
 }
 
-function shareConsent(consent) {
+function share(consent) {
   window.location.href = 'share.html?id=' + consent.uuid
 }
