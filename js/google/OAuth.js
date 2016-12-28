@@ -9,7 +9,7 @@ function OAuth() {
       gapi.client.init({
         apiKey: DECIDE_GOOGLE_API_KEY,
         discoveryDocs: DISCOVERY_URL,
-        clientId: '847560978980-gj7ac8oo7h5spk4uupdko3j865aon6hu.apps.googleusercontent.com',
+        clientId: DECIDE_GOOGLE_API_CLIENT_ID,
         scope: SCOPES
       }).then(function () {
         var signedIn = gapi.auth2.getAuthInstance().isSignedIn.get();
