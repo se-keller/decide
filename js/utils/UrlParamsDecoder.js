@@ -13,6 +13,10 @@ var UrlParamsDecoder = function(url) {
 		return !jQuery.isEmptyObject(params)
 	}
 
+	this.hasParam = function(paramKey) {
+		return jQuery.isEmptyObject(params) || params[paramKey] === undefined
+	}
+
 	function decode() {
 		var decodedParams = {}
 		var urlParts = url.split('?')
