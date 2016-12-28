@@ -2,6 +2,12 @@ var uuidGenerator;
 
 $(document).ready(function() {
   uuidGenerator = new UUID()
+
+        console.log(DECIDE_GOOGLE_API_KEY)
+        console.log(DECIDE_GOOGLE_API_DISCOVERY_DOCS)
+        console.log(DECIDE_GOOGLE_API_CLIENT_ID)
+        console.log(DECIDE_GOOGLE_API_SCOPES)
+
 	var oauth = new OAuth()
   oauth.login()
 
@@ -41,7 +47,7 @@ function createConsent() {
 }
 
 function persist(consent) {
-  var gSheet = new GSheets(decide.repository.google.spreadsheet.id)
+  var gSheet = new GSheets(DECIDE_REPOSITORY_GOOGLE_SPREADSHEET_ID)
   gSheet.append([ [consent.uuid, consent.creationDate, consent.creatorEMail, JSON.stringify(consent)] ])
 }
 
