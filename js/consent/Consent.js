@@ -1,4 +1,5 @@
 function Consent() {
+	this.type = 'consent'
 	this.agreeCount = 0
 	this.acceptCount = 0
 	this.currentDecision = ''
