@@ -14,7 +14,7 @@ var UrlParamsDecoder = function(url) {
 	}
 
 	this.hasParam = function(paramKey) {
-		return !jQuery.isEmptyObject(params) || params[paramKey] === undefined
+		return !jQuery.isEmptyObject(params) && params[paramKey] !== undefined
 	}
 
 	function decode() {
