@@ -2,10 +2,7 @@ var uuidGenerator;
 
 $(document).ready(function() {
   uuidGenerator = new UUID()
-	var oauth = new OAuth(
-    'AIzaSyDbR2kJv9QUCbSRPOPt3R7v31NCquDEz7w',
-    '847560978980-gj7ac8oo7h5spk4uupdko3j865aon6hu.apps.googleusercontent.com'
-    )
+	var oauth = new OAuth()
   oauth.login()
 
 	$('#txtarea-consent-proposal').on('input propertychange paste', function() {
@@ -44,7 +41,7 @@ function createConsent() {
 }
 
 function persist(consent) {
-  var gSheet = new GSheets('1bsPVDw_DKoByu3_y8bn3pQ_VAF8Mr8QJA5pcZIZATpI')
+  var gSheet = new GSheets(decide.repository.google.spreadsheet.id)
   gSheet.append([ [consent.uuid, consent.creationDate, consent.creatorEMail, JSON.stringify(consent)] ])
 }
 
