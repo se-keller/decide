@@ -11,8 +11,7 @@ $(document).ready(function() {
        		var id = urlParamsDecoder.valueOf("id")
         	var gSheet = new GSheets(DECIDE_REPOSITORY_GOOGLE_SPREADSHEET_ID)
         	gSheet.findRow(0, id, function(result){
-        		console.log(JSON.parse(result[3]).type)
-        		window.location.href = result[3].type + '-participate.html?id=' + id
+        		window.location.href = JSON.parse(result[3]).type + '-participate.html?id=' + id
         	})
     	} 
 	});
