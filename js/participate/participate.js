@@ -1,12 +1,7 @@
 $(document).ready(function() {
 	var oauth = new OAuth()
-  	oauth.login(function(){})
-
-	console.log('constants refactoring')
-	
-
-    $('#h-participate').click(function(){
-	    var urlParamsDecoder = new UrlParamsDecoder(window.location.href)
+  	oauth.login(function(){
+  		var urlParamsDecoder = new UrlParamsDecoder(window.location.href)
     	if(urlParamsDecoder.hasParams()) {
        		var id = urlParamsDecoder.valueOf("id")
         	var gSheet = new GSheets(DECIDE_REPOSITORY_GOOGLE_SPREADSHEET_ID)
@@ -14,5 +9,5 @@ $(document).ready(function() {
         		window.location.href = JSON.parse(result[3]).type + '-participate.html?id=' + id
         	})
     	} 
-	});
+  	})
 })
