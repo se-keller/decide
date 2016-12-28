@@ -2,7 +2,7 @@ function OAuth() {
  
   var authorized = true;
 
-  this.login = function() {
+  this.login = function(callback) {
     gapi.load('client:auth2', function(){
       gapi.client.init({
         apiKey: DECIDE_GOOGLE_API_KEY,
@@ -15,10 +15,14 @@ function OAuth() {
           gapi.auth2.getAuthInstance().signIn().then(
             function(response){
               console.log("Log in successful")
+              callback()
             }, function(response){
               console.log('Could not log in')
+              noLoginCallback()
             });
-        } 
+        } else {
+          callback()
+        }
       });  
     });
   }
