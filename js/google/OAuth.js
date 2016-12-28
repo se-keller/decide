@@ -1,16 +1,14 @@
-function OAuth(apiKey, clientId) {
+function OAuth() {
  
   var authorized = true;
-  var SCOPES = 'https://www.googleapis.com/auth/spreadsheets profile'
-  var DISCOVERY_URL = ["https://sheets.googleapis.com/$discovery/rest?version=v4", "https://people.googleapis.com/$discovery/rest?version=v1"]
 
-  this.login = function() {
+  this.login = function() { 
     gapi.load('client:auth2', function(){
       gapi.client.init({
-        apiKey: apiKey,
-        discoveryDocs: DISCOVERY_URL,
-        clientId: clientId,
-        scope: SCOPES
+        apiKey: decide.google.api.key,
+        discoveryDocs: decide.google.api.discovery.docs,
+        clientId: decide.google.api.client.id,
+        scope: decide.google.api.scopes
       }).then(function () {
         var signedIn = gapi.auth2.getAuthInstance().isSignedIn.get();
         if(!signedIn) {
