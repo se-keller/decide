@@ -1,6 +1,6 @@
 $(document).ready(function() {
 	var oauth = new OAuth()
-  	oauth.login()
+  	oauth.login(function(){})
 
 	console.log('constants refactoring')
 	

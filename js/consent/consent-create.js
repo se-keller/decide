@@ -3,13 +3,8 @@ var uuidGenerator;
 $(document).ready(function() {
   uuidGenerator = new UUID()
 
-        console.log(DECIDE_GOOGLE_API_KEY)
-        console.log(DECIDE_GOOGLE_API_DISCOVERY_DOCS)
-        console.log(DECIDE_GOOGLE_API_CLIENT_ID)
-        console.log(DECIDE_GOOGLE_API_SCOPES)
-
 	var oauth = new OAuth()
-  oauth.login()
+  oauth.login(function(){})
 
 	$('#txtarea-consent-proposal').on('input propertychange paste', function() {
     if($('#txtarea-consent-proposal').val()==="") {
