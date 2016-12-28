@@ -7,7 +7,7 @@ function OAuth() {
   this.login = function() {
     gapi.load('client:auth2', function(){
       gapi.client.init({
-        apiKey: 'AIzaSyDbR2kJv9QUCbSRPOPt3R7v31NCquDEz7w',
+        apiKey: DECIDE_GOOGLE_API_KEY,
         discoveryDocs: DISCOVERY_URL,
         clientId: '847560978980-gj7ac8oo7h5spk4uupdko3j865aon6hu.apps.googleusercontent.com',
         scope: SCOPES
