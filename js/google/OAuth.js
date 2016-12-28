@@ -8,7 +8,7 @@ function OAuth() {
     gapi.load('client:auth2', function(){
       gapi.client.init({
         apiKey: DECIDE_GOOGLE_API_KEY,
-        discoveryDocs: DISCOVERY_URL,
+        discoveryDocs: DECIDE_GOOGLE_API_DISCOVERY_DOCS,
         clientId: DECIDE_GOOGLE_API_CLIENT_ID,
         scope: DECIDE_GOOGLE_API_SCOPES
       }).then(function () {
