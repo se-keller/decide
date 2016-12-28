@@ -5,10 +5,10 @@ function OAuth() {
   this.login = function() { 
     gapi.load('client:auth2', function(){
       gapi.client.init({
-        apiKey: decide.google.api.key,
-        discoveryDocs: decide.google.api.discovery.docs,
-        clientId: decide.google.api.client.id,
-        scope: decide.google.api.scopes
+        apiKey: DECIDE_GOOGLE_API_KEY,
+        discoveryDocs: DECIDE_GOOGLE_API_DISCOVERY_DOCS,
+        clientId: DECIDE_GOOGLE_API_CLIENT_ID,
+        scope: DECIDE_GOOGLE_API_SCOPES
       }).then(function () {
         var signedIn = gapi.auth2.getAuthInstance().isSignedIn.get();
         if(!signedIn) {
