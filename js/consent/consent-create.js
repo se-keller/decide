@@ -47,11 +47,6 @@ function createConsent() {
   return consent
 }
 
-function persist(consent) {
-  var gSheet = new GSheets(DECIDE_REPOSITORY_GOOGLE_SPREADSHEET_ID)
-  gSheet.append([ [consent.uuid, consent.creationDate, consent.creatorEMail, JSON.stringify(consent)] ])
-}
-
 function share(consent) {
   window.location.href = 'share.html?id=' + consent.uuid
 }
