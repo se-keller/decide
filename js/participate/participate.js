@@ -6,8 +6,8 @@ $(document).ready(function() {
   		var urlParamsDecoder = new UrlParamsDecoder(window.location.href)
     	if(urlParamsDecoder.hasParam('id')) {
        		var id = urlParamsDecoder.valueOf('id')
-       		consentRepository.find(id, function() {
-       			window.location.href = JSON.parse(result[3]).type + '-participate.html?id=' + id
+       		consentRepository.find(id, function(consent) {
+       			window.location.href = consent.type + '-participate.html?id=' + id
        		})
     	} 
   	})
