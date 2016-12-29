@@ -38,9 +38,9 @@ $(document).ready(function() {
 });
 
 function createConsent() { 
-  var gProfile = new GProfile()
+  var profile = new Profile()
   var consent = new Consent()
-  consent.creatorEMail = gProfile.email()
+  consent.creatorEMail = profile.email
   consent.uuid = uuidGenerator.generate()
   consent.currentDecision = $('#txtarea-consent-proposal').val()
   consent.creationDate = new Date()
