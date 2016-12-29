@@ -1,4 +1,4 @@
-function ConsentRepository() {
+function ProfileRepository() {
 	var EMAIL_COLUMN = 0;
 	var JSON_OBJECT_COLUMN = 1;
 
