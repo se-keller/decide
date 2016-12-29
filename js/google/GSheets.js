@@ -19,18 +19,18 @@ function GSheets(spreadsheetId) {
           range: sheet + '!A:Z',
         }).then(function(response) {
           var range = response.result;
-          var rowCount = range.values.length
-          if (rowCount > 0) {
-            for (i = 0; i < rowCount; i++) {
+          if (range.values.length > 0) {
+            for (i = 0; i < range.values.length; i++) {
               var row = range.values[i];
               if(row[column] === value) {
               	foundCallback(row)
               	return
               }
-              	
             }
-          } 
-          notFoundCallback()
+          } else {
+            console.log('No data found.');
+            notFoundCallback()
+          }
         }, function(response) {
           	console.log('Error: ' + response.result.error.message);
         });
