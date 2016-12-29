@@ -16,22 +16,18 @@ $(document).ready(function() {
     }
 	});
   
-	$('#btn-consent-proposal-accept').click(function(){
-    if(!$('#btn-consent-proposal-accept').hasClass("disabled")) {
+	$('#btn-consent-proposal-accept:enabled').click(function(){
       var consent = createConsent()
       consent.accept()
       persist(consent)
       share(consent)  
-    }
 	});
 
-	$('#btn-consent-proposal-agree').click(function(){
-    if(!$('#btn-consent-proposal-accept').hasClass("disabled")) {
+	$('#btn-consent-proposal-agree:enabled').click(function(){
       var consent = createConsent()
       consent.agree()
       persist(consent)
       share(consent)
-    }
   });
 });
 
