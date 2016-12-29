@@ -1,9 +1,9 @@
 function GSheets(spreadsheetId) {
 
-	this.append = function(values) {
+	this.append = function(sheet, values) {
 		gapi.client.sheets.spreadsheets.values.append({
             spreadsheetId: spreadsheetId,
-            range: 'Sheet1!A:Z',
+            range: sheet + '!A:Z',
             valueInputOption: 'USER_ENTERED',
             values: values
           }).then(function(response) {
@@ -13,10 +13,10 @@ function GSheets(spreadsheetId) {
           });
 	}
 
-	this.findRow = function(column, value, callback) {
+	this.findRow = function(sheet, column, value, callback) {
 		gapi.client.sheets.spreadsheets.values.get({
           spreadsheetId: spreadsheetId,
-          range: 'Sheet1!A:Z',
+          range: sheet + '!A:Z',
         }).then(function(response) {
           var range = response.result;
           var rowCount = range.values.length
