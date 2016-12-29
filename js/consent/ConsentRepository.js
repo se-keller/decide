@@ -1,5 +1,6 @@
 function ConsentRepository() {
 	var ID_COLUMN = 0;
+	var JSON_OBJECT_COLUMN = 3;
 
 	this.persist = function(consent) {
   		var gSheet = new GSheets(DECIDE_REPOSITORY_GOOGLE_SPREADSHEET_ID)
@@ -10,7 +11,7 @@ function ConsentRepository() {
 		var gSheet = new GSheets(DECIDE_REPOSITORY_GOOGLE_SPREADSHEET_ID)
 
     	gSheet.findRow('consents', ID_COLUMN, id, function(result){
-    		var consent = JSON.parse(result[3])
+    		var consent = JSON.parse(result[JSON_OBJECT_COLUMN])
         	callback(consent)
     	})
 	}

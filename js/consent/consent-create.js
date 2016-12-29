@@ -5,8 +5,8 @@ $(document).ready(function() {
   uuidGenerator = new UUID()
   consentRepository = new ConsentRepository()
 
-	var oauth = new OAuth()
-  oauth.login(function(){})
+	var login = new Login()
+  login.login(function(){})
 
 	$('#txtarea-consent-proposal').on('input propertychange paste', function() {
     if($('#txtarea-consent-proposal').val()==="") {

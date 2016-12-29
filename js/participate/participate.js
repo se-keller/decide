@@ -1,8 +1,8 @@
 var consentRepository
 $(document).ready(function() {
 	consentRepository = new ConsentRepository()
-	var oauth = new OAuth()
-  	oauth.login(function(){
+	var login = new Login()
+  	login.login(function(){
   		var urlParamsDecoder = new UrlParamsDecoder(window.location.href)
     	if(urlParamsDecoder.hasParam('id')) {
        		var id = urlParamsDecoder.valueOf('id')
