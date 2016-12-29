@@ -17,17 +17,21 @@ $(document).ready(function() {
 	});
   
 	$('#btn-consent-proposal-accept').click(function(){
-    var consent = createConsent()
-    consent.accept()
-    persist(consent)
-    share(consent)
+    if(!$('#btn-consent-proposal-accept').hasClass("disabled")) {
+      var consent = createConsent()
+      consent.accept()
+      persist(consent)
+      share(consent)  
+    }
 	});
 
 	$('#btn-consent-proposal-agree').click(function(){
-    var consent = createConsent()
-    consent.agree()
-    persist(consent)
-    share(consent)
+    if(!$('#btn-consent-proposal-accept').hasClass("disabled")) {
+      var consent = createConsent()
+      consent.agree()
+      persist(consent)
+      share(consent)
+    }
   });
 });
 
