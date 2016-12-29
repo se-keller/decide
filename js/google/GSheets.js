@@ -19,7 +19,9 @@ function GSheets(spreadsheetId) {
           range: sheet + '!A:Z',
         }).then(function(response) {
           var range = response.result;
-          if (range.values.length > 0) {
+          if(range.values === undefined) {
+            notFoundCallback
+          } else if (range.values.length > 0) {
             for (i = 0; i < range.values.length; i++) {
               var row = range.values[i];
               if(row[column] === value) {
@@ -27,10 +29,8 @@ function GSheets(spreadsheetId) {
               	return
               }
             }
-          } else {
-            console.log('No data found.');
-            notFoundCallback()
-          }
+          } 
+          notFoundCallback()
         }, function(response) {
           	console.log('Error: ' + response.result.error.message);
         });
