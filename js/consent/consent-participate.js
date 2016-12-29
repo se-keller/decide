@@ -7,7 +7,7 @@ $(document).ready(function() {
         	var gSheet = new GSheets(DECIDE_REPOSITORY_GOOGLE_SPREADSHEET_ID)
         	gSheet.findRow(0, id, function(result){
         		var consent = JSON.parse(result[3])
-            $('#p-consent-participate-current-decision').text(consent.currentDecision)
+            $('#p-consent-participate-current-decision').html(consent.currentDecision)
         	})
     	} 
   	})
