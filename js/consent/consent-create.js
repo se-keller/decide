@@ -1,7 +1,9 @@
 var uuidGenerator;
+var consentRepository;
 
 $(document).ready(function() {
   uuidGenerator = new UUID()
+  consentRepository = new ConsentRepository()
 
 	var oauth = new OAuth()
   oauth.login(function(){})
@@ -20,7 +22,7 @@ $(document).ready(function() {
     if(!$('#btn-consent-proposal-accept').hasClass("disabled")) {
       var consent = createConsent()
       consent.accept()
-      persist(consent)
+      consentRepository.persist(consent)
       share(consent)  
     }
 	});
@@ -29,7 +31,7 @@ $(document).ready(function() {
     if(!$('#btn-consent-proposal-accept').hasClass("disabled")) {
       var consent = createConsent()
       consent.agree()
-      persist(consent)
+      consentRepository.persist(consent)
       share(consent)
     }
   });

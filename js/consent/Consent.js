@@ -21,6 +21,4 @@ function Consent() {
 		instance.acceptCount = 0
 		instance.currentDecision = newProposal
 	}
-
-	
 }
