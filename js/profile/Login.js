@@ -6,8 +6,14 @@ function Login() {
 
 	this.login = function(callback) {
 		oauth.login(function(){
-			profileRepository.persist(new Profile())
-			callback()
+			var profile = new Profile()
+			profileRepository.find(profile, function(){
+				callback()
+			}, function(){
+				profileRepository.persist(profile)
+				callback()	
+			})
+			
 		});
 	}
 }

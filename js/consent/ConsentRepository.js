@@ -13,6 +13,8 @@ function ConsentRepository() {
     	gSheet.findRow('consents', ID_COLUMN, id, function(result){
     		var consent = JSON.parse(result[JSON_OBJECT_COLUMN])
         	callback(consent)
+    	}, function(){
+    		console.log('Consent decision not found')
     	})
 	}
 }

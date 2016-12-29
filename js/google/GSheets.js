@@ -13,7 +13,7 @@ function GSheets(spreadsheetId) {
           });
 	}
 
-	this.findRow = function(sheet, column, value, callback) {
+	this.findRow = function(sheet, column, value, foundCallback, notFoundCallback) {
 		gapi.client.sheets.spreadsheets.values.get({
           spreadsheetId: spreadsheetId,
           range: sheet + '!A:Z',
@@ -24,15 +24,13 @@ function GSheets(spreadsheetId) {
             for (i = 0; i < rowCount; i++) {
               var row = range.values[i];
               if(row[column] === value) {
-              	callback(row)
+              	foundCallback(row)
               	return
               }
               	
             }
-          } else {
-            console.log('No data found.');
-            callback([])
-          }
+          } 
+          notFoundCallback()
         }, function(response) {
           	console.log('Error: ' + response.result.error.message);
         });
