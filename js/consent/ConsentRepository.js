@@ -2,9 +2,11 @@ function ConsentRepository() {
 	var ID_COLUMN = 0;
 	var JSON_OBJECT_COLUMN = 3;
 
-	this.persist = function(consent) {
+	this.persist = function(consent, persistedCallback) {
   		var gSheet = new GSheets(DECIDE_REPOSITORY_GOOGLE_SPREADSHEET_ID)
-  		gSheet.append('consents', [ [consent.uuid, consent.creationDate, consent.creatorEMail, JSON.stringify(consent)] ])
+  		gSheet.append('consents', [ [consent.uuid, consent.creationDate, consent.creatorEMail, JSON.stringify(consent)] ], function(){
+  			persistedCallback()
+  		})
 	}
 
 	this.find = function(id, callback) {

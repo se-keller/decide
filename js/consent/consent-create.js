@@ -26,8 +26,10 @@ $(document).ready(function() {
 
       var consent = createConsent()
       consent.accept()
-      consentRepository.persist(consent)
-      share(consent)  
+      consentRepository.persist(consent, function(){
+        share(consent)  
+      })
+      
     }
 	});
 
@@ -35,24 +37,27 @@ $(document).ready(function() {
     if(!$('#btn-consent-proposal-accept').hasClass("disabled")) {
       var consent = createConsent()
       consent.agree()
-      consentRepository.persist(consent)
-      share(consent)
+      consentRepository.persist(consent, function(){
+        share(consent)  
+      })
     }
   });
 });
 
 function createConsent() { 
   var profile = new Profile()
-  profileRepository.persist(profile)
+  profileRepository.persist(profile, function(){
+    var consent = new Consent()
+    consent.creatorEMail = profile.email
+    consent.uuid = uuidGenerator.generate()
+    consent.currentDecision = $('#txtarea-consent-proposal').val()
+    consent.creationDate = new Date()
+    return consent  
+  })
 
-  var consent = new Consent()
-  consent.creatorEMail = profile.email
-  consent.uuid = uuidGenerator.generate()
-  consent.currentDecision = $('#txtarea-consent-proposal').val()
-  consent.creationDate = new Date()
-  return consent
+  
 }
 
 function share(consent) {
-  //window.location.href = 'share.html?id=' + consent.uuid
+  window.location.href = 'share.html?id=' + consent.uuid
 }

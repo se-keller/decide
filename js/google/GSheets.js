@@ -1,6 +1,6 @@
 function GSheets(spreadsheetId) {
 
-	this.append = function(sheet, values) {
+	this.append = function(sheet, values, successCallback) {
 		gapi.client.sheets.spreadsheets.values.append({
             spreadsheetId: spreadsheetId,
             range: sheet + '!A:Z',
@@ -8,6 +8,7 @@ function GSheets(spreadsheetId) {
             values: values
           }).then(function(response) {
             console.log("Success")
+            successCallback()
           }, function(response) {
             console.log('Error: ' + response.result.error.message);
           });
