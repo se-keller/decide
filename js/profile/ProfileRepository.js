@@ -23,6 +23,7 @@ function ProfileRepository() {
     			var profile = JSON.parse(result[JSON_OBJECT_COLUMN])
         		foundCallback(profile)
     		}, function(){
+    			console.log("No Profile found for " + id)
     			notFoundCallback()
     		})
 	}
