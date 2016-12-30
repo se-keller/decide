@@ -1,9 +1,11 @@
-var uuidGenerator;
-var consentRepository;
+var uuidGenerator
+var consentRepository
+var profileRepository
 
 $(document).ready(function() {
   uuidGenerator = new UUID()
   consentRepository = new ConsentRepository()
+  profileRepository = new ProfileRepository()
 
 	var login = new Login()
   login.login(function(){})
@@ -20,6 +22,8 @@ $(document).ready(function() {
   
 	$('#btn-consent-proposal-accept').click(function(){
     if(!$('#btn-consent-proposal-accept').hasClass("disabled")) {
+      
+
       var consent = createConsent()
       consent.accept()
       consentRepository.persist(consent)
@@ -39,6 +43,8 @@ $(document).ready(function() {
 
 function createConsent() { 
   var profile = new Profile()
+  profileRepository.persist(profile)
+  
   var consent = new Consent()
   consent.creatorEMail = profile.email
   consent.uuid = uuidGenerator.generate()
