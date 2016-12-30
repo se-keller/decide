@@ -44,7 +44,7 @@ $(document).ready(function() {
 function createConsent() { 
   var profile = new Profile()
   profileRepository.persist(profile)
-  
+
   var consent = new Consent()
   consent.creatorEMail = profile.email
   consent.uuid = uuidGenerator.generate()
@@ -54,5 +54,5 @@ function createConsent() {
 }
 
 function share(consent) {
-  window.location.href = 'share.html?id=' + consent.uuid
+  //window.location.href = 'share.html?id=' + consent.uuid
 }
