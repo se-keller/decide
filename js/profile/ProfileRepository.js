@@ -3,8 +3,16 @@ function ProfileRepository() {
 	var JSON_OBJECT_COLUMN = 1;
 
 	this.persist = function(profile) {
+
   		var gSheet = new GSheets(DECIDE_REPOSITORY_GOOGLE_SPREADSHEET_ID)
-  		gSheet.append('profiles', [ [profile.email, JSON.stringify(profile)] ])
+  		this.find(profile.email, 
+  			function(){
+  				// do nothing if entry already exists
+  			}, function(){
+  				gSheet.append('profiles', [ [profile.email, JSON.stringify(profile)] ])	
+  			})
+
+  		
 	}
 
 	this.find = function(id, foundCallback, notFoundCallback) {
