@@ -22,29 +22,29 @@ $(document).ready(function() {
   
 	$('#btn-consent-proposal-accept').click(function(){
     if(!$('#btn-consent-proposal-accept').hasClass("disabled")) {
-      
-
-      var consent = createConsent()
-      consent.accept()
-      consentRepository.persist(consent, function(){
-        share(consent)  
-      })
-      
+      var consent = createConsent(function(consent){
+        consent.accept()
+        consentRepository.persist(consent, function(){
+          share(consent)  
+        })  
+      }) 
     }
 	});
 
 	$('#btn-consent-proposal-agree').click(function(){
     if(!$('#btn-consent-proposal-accept').hasClass("disabled")) {
-      var consent = createConsent()
-      consent.agree()
-      consentRepository.persist(consent, function(){
-        share(consent)  
+      var consent = createConsent(function(consent){
+        consent.agree()
+        consentRepository.persist(consent, function(){
+          share(consent)  
+        })  
       })
     }
   });
 });
 
-function createConsent() { 
+
+function createConsent(callback) { 
   var profile = new Profile()
   profileRepository.persist(profile, function(){
     var consent = new Consent()
@@ -52,10 +52,8 @@ function createConsent() {
     consent.uuid = uuidGenerator.generate()
     consent.currentDecision = $('#txtarea-consent-proposal').val()
     consent.creationDate = new Date()
-    return consent  
+    callback(consent)
   })
-
-  
 }
 
 function share(consent) {

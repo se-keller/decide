@@ -7,10 +7,10 @@ function ProfileRepository() {
   		this.find(profile.email, 
   			function(){
   				// do nothing if entry already exists
-  				persistedCallback
+  				persistedCallback()
   			}, function(){
   				gSheet.append('profiles', [ [profile.email, JSON.stringify(profile)] ], function(){
-  					persistedCallback
+  					persistedCallback()
   				})	
   			})
 
