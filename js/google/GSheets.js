@@ -20,7 +20,7 @@ function GSheets(spreadsheetId) {
         }).then(function(response) {
           var range = response.result;
           if(range.values === undefined) {
-            notFoundCallback
+            notFoundCallback()
           } else if (range.values.length > 0) {
             for (i = 0; i < range.values.length; i++) {
               var row = range.values[i];
