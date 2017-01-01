@@ -13,7 +13,7 @@ function ConsentRepository() {
 		var gSheet = new GSheets(DECIDE_REPOSITORY_GOOGLE_SPREADSHEET_ID)
 
     	gSheet.findRow('consents', ID_COLUMN, id, function(result){
-    		var consentStruct = Consent, JSON.parse(result[JSON_OBJECT_COLUMN])
+    		var consentStruct = JSON.parse(result[JSON_OBJECT_COLUMN])
         
         consent = new Consent()
         consent.type = consentStruct.type
