@@ -9,8 +9,8 @@ $(document).ready(function() {
      		var id = urlParamsDecoder.valueOf('id')
         consentRepository.find(id, function(consent) {
           $('#p-consent-participate-current-decision').html(consent.currentDecision.replace(/(?:\r\n|\r|\n)/g, '<br />'))
-          $('#bdg-consent-participate-agree').text(consent.agreeCount)
-          $('#bdg-consent-participate-accept').text(consent.acceptCount)
+          $('#bdg-consent-participate-agree').text(consent.agreeCount())
+          $('#bdg-consent-participate-accept').text(consent.acceptCount())
         })
   	} 
 	})

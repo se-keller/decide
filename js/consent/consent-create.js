@@ -23,7 +23,8 @@ $(document).ready(function() {
 	$('#btn-consent-proposal-accept').click(function(){
     if(!$('#btn-consent-proposal-accept').hasClass("disabled")) {
       var consent = createConsent(function(consent){
-        consent.accept()
+
+        consent.accept(new Profile().email)
         consentRepository.persist(consent, function(){
           share(consent)  
         })  
@@ -34,7 +35,7 @@ $(document).ready(function() {
 	$('#btn-consent-proposal-agree').click(function(){
     if(!$('#btn-consent-proposal-accept').hasClass("disabled")) {
       var consent = createConsent(function(consent){
-        consent.agree()
+        consent.agree(new Profile().email)
         consentRepository.persist(consent, function(){
           share(consent)  
         })  
