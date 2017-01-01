@@ -1,4 +1,4 @@
-console.log('TEST voteCount 1')
+console.log('TEST voteCount Cast')
 var DECIDE_GOOGLE_API_KEY = 'AIzaSyDbR2kJv9QUCbSRPOPt3R7v31NCquDEz7w'
 var DECIDE_GOOGLE_API_CLIENT_ID = '847560978980-gj7ac8oo7h5spk4uupdko3j865aon6hu.apps.googleusercontent.com'
 var DECIDE_GOOGLE_API_SCOPES = 'https://www.googleapis.com/auth/spreadsheets profile'

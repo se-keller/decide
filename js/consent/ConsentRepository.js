@@ -13,7 +13,7 @@ function ConsentRepository() {
 		var gSheet = new GSheets(DECIDE_REPOSITORY_GOOGLE_SPREADSHEET_ID)
 
     	gSheet.findRow('consents', ID_COLUMN, id, function(result){
-    		var consent = JSON.parse(result[JSON_OBJECT_COLUMN])
+    		var consent = Object.create(Consent, JSON.parse(result[JSON_OBJECT_COLUMN]))
         	callback(consent)
     	}, function(){
     		console.log('Consent decision not found')
