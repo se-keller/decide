@@ -7,13 +7,13 @@ var isEnabled = function(selector) {
 }
 
 var disableOn = function(disablePredicate, selectors) {
-	if(disablePredicate) {
-		$.each(selectors, function(index, selector) {
-			if(disablePredicate)
-				$(selector).addClass("disabled")
-			else
-				$(selector).removeClass("disabled")	
-		})
-	}
+	$.each(selectors, function(index, selector) {
+		console.log(selector)
+		console.log(disablePredicate)
+		if(disablePredicate)
+			$(selector).addClass("disabled")
+		else
+			$(selector).removeClass("disabled")	
+	})
 }
 
