@@ -21,7 +21,7 @@ $(document).ready(function() {
 
   $('#btn-consent-participate-agree').click(function(){
 
-  }
+  })
 
 })
 
