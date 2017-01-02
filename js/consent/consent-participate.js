@@ -20,7 +20,17 @@ $(document).ready(function() {
 	})
 
   $('#btn-consent-participate-agree').click(function(){
+    if(isEnabled('#btn-consent-participate-agree')) {
+      consent.agree(profile.email)
+      consentRepository.update(consent)
+    }
+  })
 
+  $('#btn-consent-participate-accept').click(function(){
+    if(isEnabled('#btn-consent-participate-accept')) {
+      consent.accept(profile.email)
+      consentRepository.update(consent)
+    }
   })
 
 })

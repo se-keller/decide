@@ -14,6 +14,20 @@ function GSheets(spreadsheetId) {
           });
 	}
 
+  this.update = function(sheet, row, values, successCallback) {
+    gapi.client.sheets.spreadsheets.values.update({
+            spreadsheetId: spreadsheetId,
+            range: sheet + '!A'+row+':Z'+row,
+            valueInputOption: 'USER_ENTERED',
+            values: values
+          }).then(function(response) {
+            console.log("Success")
+            successCallback()
+          }, function(response) {
+            console.log('Error: ' + response.result.error.message);
+          });
+  }
+
 	this.findRow = function(sheet, column, value, foundCallback, notFoundCallback) {
 		gapi.client.sheets.spreadsheets.values.get({
           spreadsheetId: spreadsheetId,
@@ -27,7 +41,8 @@ function GSheets(spreadsheetId) {
             for (i = 0; i < range.values.length; i++) {
               var row = range.values[i];
               if(row[column] === value) {
-              	foundCallback(row)
+                var gSheetRowNo = i+1
+              	foundCallback(row, gSheetRowNo)
               	return
               }
             }

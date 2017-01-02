@@ -8,8 +8,6 @@ var isEnabled = function(selector) {
 
 var disableOn = function(disablePredicate, selectors) {
 	$.each(selectors, function(index, selector) {
-		console.log(selector)
-		console.log(disablePredicate)
 		if(disablePredicate)
 			$(selector).addClass("disabled")
 		else
