@@ -1,5 +1,5 @@
 function ConsentVote() {
-	this.voterEMail
+	this.voter
 	this.vote
 	this.proposal
 	this.reason

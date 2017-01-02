@@ -4,9 +4,7 @@ function Consent() {
 	var DISAGREE_ID = 'disagree'
 
 	this.type = 'consent'
-	this.creatorEMail = ''
 	this.uuid = ''
-	this.creationDate = new Date()
 	this.votes = []
 	var instance = this
 	
@@ -22,12 +20,12 @@ function Consent() {
 		return voteCount(ACCEPT_ID)	
 	}
 
-	this.accept = function(voterEMail, proposal) {
-		addVote(ACCEPT_ID, voterEMail, proposal)
+	this.accept = function(voter, proposal) {
+		addVote(ACCEPT_ID, voter, proposal)
 	}
 
-	this.disagree = function(voterEMail, newProposal, reason) { 
-		addVote(DISAGREE_ID, voterEMail, newProposal, reason)
+	this.disagree = function(voter, newProposal, reason) { 
+		addVote(DISAGREE_ID, voter, newProposal, reason)
 	}
 
 	this.currentProposal = function() {
@@ -40,9 +38,19 @@ function Consent() {
 		return proposal
 	}
 
-	var addVote = function(voteToPush, voterEMail, proposal, reason) {
+	this.creator = function() {
+		var currentCreator = ''
+		$.each(instance.votes, function(index, vote){
+			if(vote.proposal != undefined)
+				currentCreator = vote.voter
+			
+		})
+		return currentCreator
+	}
+
+	var addVote = function(voteToPush, voter, proposal, reason) {
 		var vote = new ConsentVote()
-		vote.voterEMail = voterEMail
+		vote.voter = voter
 		vote.voteDate = new Date()
 		vote.vote = voteToPush
 		vote.reason = reason

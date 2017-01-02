@@ -17,23 +17,29 @@ describe("Consent", function() {
   });
 
   it("disagree resets agree- and accept-count", function() {
-    consent.agree('voterEmail')
-    consent.accept('voterEmail')
-    consent.disagree('voterEmail', 'newProposal')
+    consent.agree('voter')
+    consent.accept('voter')
+    consent.disagree('voter', 'newProposal')
     expect(consent.acceptCount()).toEqual(0)
     expect(consent.agreeCount()).toEqual(0)
   });
 
   it("can retrieve current proposal after different votes on same proposal", function() {
-    consent.agree('voterEMail', 'proposal')
-    consent.accept('different voterEMail')
+    consent.agree('voter', 'proposal')
+    consent.accept('different voter')
     expect(consent.currentProposal()).toEqual('proposal')
   });
 
   it("can retrieve current proposal after disagree", function() {
-    consent.agree('voterEMail', 'proposal')
-    consent.disagree('different voterEMail', 'disagree proposal')
+    consent.agree('voter', 'proposal')
+    consent.disagree('different EMail', 'disagree proposal')
     expect(consent.currentProposal()).toEqual('disagree proposal')
+  });
+
+  it("last voter with proposal is creator", function() {
+    consent.agree('voter', 'proposal')
+    consent.disagree('different voter', 'new proposal')
+    expect(consent.creator()).toEqual('different voter')
   });
 
 })
