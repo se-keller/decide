@@ -5,7 +5,7 @@ function ConsentRepository() {
 	this.persist = function(consent, persistedCallback) {
   		var gSheet = new GSheets(DECIDE_REPOSITORY_GOOGLE_SPREADSHEET_ID)
 
-      gSheet.findRow('consents', ID_COLUMN, id, function(result, row){
+      gSheet.findRow('consents', ID_COLUMN, consent.uuid, function(result, row){
         // found just update
         gSheet.update('consents', row, [ [consent.uuid, consent.creationDate, consent.creatorEMail, JSON.stringify(consent)] ], function(){
           persistedCallback()
