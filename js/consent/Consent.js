@@ -48,6 +48,20 @@ function Consent() {
 		return currentCreator
 	}
 
+	this.hasAgreed = function(voter) {
+		if(hasVotedOnLastProposal(voter)) {
+			return lastVote(voter).vote === AGREE_ID
+		}
+		return false
+	}
+
+	this.hasAccepted = function(voter) {
+		if(hasVotedOnLastProposal(voter)) {
+			return lastVote(voter).vote === ACCEPT_ID
+		}
+		return false 
+	}
+
 	var addVote = function(voteToPush, voter, proposal, reason) {
 		var vote = new ConsentVote()
 		vote.voter = voter
@@ -69,9 +83,26 @@ function Consent() {
 		return count
 	}
 
+	var lastVote = function(voter) {
+		var lastVote = undefined
+		$.each(instance.votes, function(index, vote){
+			if(vote.voter === voter)
+				lastVote = vote
+			
+		})
+		return lastVote
+	}
 
-
-	
+	var hasVotedOnLastProposal = function(voter) {
+		var hasVoted = false
+		$.each(instance.votes, function(index, vote){
+			if(vote.voter === voter)
+				hasVoted = true
+			if(vote.vote === DISAGREE_ID)
+				hasVoted = false
+		})
+		return hasVoted
+	}
 
 	
 	

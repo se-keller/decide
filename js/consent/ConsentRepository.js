@@ -24,9 +24,7 @@ function ConsentRepository() {
         
     consent = new Consent()
     consent.type = consentStruct.type
-    consent.creatorEMail = consentStruct.creatorEMail
     consent.uuid = consentStruct.uuid
-    consent.creationDate = consentStruct.creationDate
     consent.votes = consentStruct.votes
 
     return consent

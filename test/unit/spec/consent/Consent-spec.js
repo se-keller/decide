@@ -42,4 +42,23 @@ describe("Consent", function() {
     expect(consent.creator()).toEqual('different voter')
   });
 
+  it("can find out if a voter already agreed on last vote", function() {
+    expect(consent.hasAgreed('agree voter')).toEqual(false)
+    consent.agree('agree voter', 'proposal')
+    expect(consent.hasAgreed('agree voter')).toEqual(true)
+  });
+
+  it("can find out if a voter already accepted on last vote", function() {
+    expect(consent.hasAccepted('accept voter')).toEqual(false)
+    consent.accept('accept voter', 'proposal')
+    expect(consent.hasAccepted('accept voter')).toEqual(true)
+  });
+
+  it("Accepted proposel is not accepted after disagree", function() {
+    consent.accept('voter 1', 'proposal 1')
+    consent.disagree('voter 2', 'proposal 2')
+    expect(consent.hasAccepted('voter 1')).toEqual(false)
+    expect(consent.hasAccepted('voter 2')).toEqual(false)
+  });
+
 })
