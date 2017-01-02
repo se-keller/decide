@@ -1,6 +1,7 @@
 var uuidGenerator
 var consentRepository
 var profileRepository
+var profile
 
 $(document).ready(function() {
   uuidGenerator = new UUID()
@@ -8,7 +9,9 @@ $(document).ready(function() {
   profileRepository = new ProfileRepository()
 
 	var login = new Login()
-  login.login(function(){})
+  login.login(function(){
+    profile = new Profile()
+  })
 
 	$('#txtarea-consent-proposal').on('input propertychange paste', function() {
     if($('#txtarea-consent-proposal').val()==="") {
@@ -24,7 +27,7 @@ $(document).ready(function() {
     if(!$('#btn-consent-proposal-accept').hasClass("disabled")) {
       var consent = createConsent(function(consent){
 
-        consent.accept(new Profile().email)
+        consent.accept(profile.email, $('#txtarea-consent-proposal').val())
         consentRepository.persist(consent, function(){
           share(consent)  
         })  
@@ -35,7 +38,7 @@ $(document).ready(function() {
 	$('#btn-consent-proposal-agree').click(function(){
     if(!$('#btn-consent-proposal-accept').hasClass("disabled")) {
       var consent = createConsent(function(consent){
-        consent.agree(new Profile().email)
+        consent.agree(profile.email, $('#txtarea-consent-proposal').val())
         consentRepository.persist(consent, function(){
           share(consent)  
         })  
@@ -46,12 +49,10 @@ $(document).ready(function() {
 
 
 function createConsent(callback) { 
-  var profile = new Profile()
   profileRepository.persist(profile, function(){
     var consent = new Consent()
     consent.creatorEMail = profile.email
     consent.uuid = uuidGenerator.generate()
-    consent.currentDecision = $('#txtarea-consent-proposal').val()
     consent.creationDate = new Date()
     callback(consent)
   })
