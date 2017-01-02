@@ -18,6 +18,11 @@ $(document).ready(function() {
       })
   	} 
 	})
+
+  $('#btn-consent-participate-agree').click(function(){
+
+  }
+
 })
 
 function refreshBadges(consent) {
@@ -26,13 +31,6 @@ function refreshBadges(consent) {
 }
 
 function refreshButtons(consent) {
-  if(consent.hasAgreed(profile.email))
-    $('#btn-consent-participate-agree').addClass("disabled")
-  else
-    $('#btn-consent-participate-agree').removeClass("disabled")
-
-  if(consent.hasAccepted(profile.email))
-    $('#btn-consent-participate-accept').addClass("disabled")
-  else
-    $('#btn-consent-participate-accept').removeClass("disabled")
+  disableOn(consent.hasAgreed(profile.email), ['#btn-consent-participate-agree'])
+  disableOn(consent.hasAccepted(profile.email), ['#btn-consent-participate-accept'])  
 }

@@ -14,19 +14,14 @@ $(document).ready(function() {
   })
 
 	$('#txtarea-consent-proposal').on('input propertychange paste', function() {
-    if($('#txtarea-consent-proposal').val()==="") {
-      $('#btn-consent-proposal-accept').addClass("disabled")
-      $('#btn-consent-proposal-agree').addClass("disabled")  
-    } else {
-      $('#btn-consent-proposal-accept').removeClass("disabled")
-      $('#btn-consent-proposal-agree').removeClass("disabled")  
-    }
+    disableOn($('#txtarea-consent-proposal').val()==="", 
+      ['#btn-consent-proposal-accept',
+      '#btn-consent-proposal-agree'])
 	});
   
 	$('#btn-consent-proposal-accept').click(function(){
-    if(!$('#btn-consent-proposal-accept').hasClass("disabled")) {
+    if(isEnabled('#btn-consent-proposal-accept')) {
       var consent = createConsent(function(consent){
-
         consent.accept(profile.email, $('#txtarea-consent-proposal').val())
         consentRepository.persist(consent, function(){
           share(consent)  
@@ -36,7 +31,7 @@ $(document).ready(function() {
 	});
 
 	$('#btn-consent-proposal-agree').click(function(){
-    if(!$('#btn-consent-proposal-accept').hasClass("disabled")) {
+    if(isEnabled('#btn-consent-proposal-accept')) {
       var consent = createConsent(function(consent){
         consent.agree(profile.email, $('#txtarea-consent-proposal').val())
         consentRepository.persist(consent, function(){
