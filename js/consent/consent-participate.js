@@ -8,7 +8,7 @@ $(document).ready(function() {
   	if(urlParamsDecoder.hasParam('id')) {
      		var id = urlParamsDecoder.valueOf('id')
         consentRepository.find(id, function(consent) {
-          $('#p-consent-participate-current-decision').html(consent.currentDecision().replace(/(?:\r\n|\r|\n)/g, '<br />'))
+          $('#p-consent-participate-current-decision').html(consent.currentProposal().replace(/(?:\r\n|\r|\n)/g, '<br />'))
           $('#bdg-consent-participate-agree').text(consent.agreeCount())
           $('#bdg-consent-participate-accept').text(consent.acceptCount())
         })
