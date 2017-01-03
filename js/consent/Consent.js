@@ -74,11 +74,15 @@ function Consent() {
 
 	var voteCount = function(voteToCount) {
 		var count = 0
+		var voters = []
 		$.each(instance.votes, function(index, vote){
-			if(vote.vote === voteToCount)
-				count++
-			if(vote.vote === DISAGREE_ID)
-				count = 0
+			voters.push(vote.voter)
+		})
+		voters = $.unique(voters)
+		$.each(voters, function(index, voter){
+			if(hasVotedOnLastProposal(voter))
+				if(lastVote(voter).vote === voteToCount)
+					count++
 		})
 		return count
 	}

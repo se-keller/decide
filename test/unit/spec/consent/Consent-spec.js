@@ -7,13 +7,33 @@ describe("Consent", function() {
   });
 
   it("agree increments agree count", function() {
-    consent.agree('voterEMail')
+    consent.agree('voter')
     expect(consent.agreeCount()).toEqual(1)
   });
 
   it("accept increments accept count", function() {
-    consent.accept('voterEMail')
+    consent.accept('voter')
     expect(consent.acceptCount()).toEqual(1)
+  });
+
+  it("switch from agree to accept does not count the agree", function(){
+    consent.agree('voter')
+    consent.accept('voter')
+    expect(consent.agreeCount()).toEqual(0)
+    expect(consent.acceptCount()).toEqual(1)
+  });
+
+  it("one accept from one voter and one agree from a different voter increments the individual vote counts", function(){
+    consent.agree('voter 1')
+    consent.accept('voter 2')
+    expect(consent.agreeCount()).toEqual(1)
+    expect(consent.acceptCount()).toEqual(1)
+  });
+
+  it("one agree before a disagree is not counted", function(){
+    consent.agree('voter 1')
+    consent.disagree('voter 2', 'newProposal')
+    expect(consent.agreeCount()).toEqual(0)
   });
 
   it("disagree resets agree- and accept-count", function() {
