@@ -1,4 +1,5 @@
 var consentRepository
+var profileRepository
 var profile
 
 $(document).ready(function() {
@@ -7,6 +8,7 @@ $(document).ready(function() {
 
     profile = new Profile()
     consentRepository = new ConsentRepository()
+    profileRepository = new ProfileRepository()
 
 		var urlParamsDecoder = new UrlParamsDecoder(window.location.href)
   	if(urlParamsDecoder.hasParam('id')) {
@@ -15,6 +17,11 @@ $(document).ready(function() {
         $('#p-consent-participate-current-decision').html(consent.currentProposal().replace(/(?:\r\n|\r|\n)/g, '<br />'))
         refreshBadges(consent)
         refreshButtons(consent)
+        profileRepositry.find(consent.creator(), function(profile){
+          $('#img-consent-participate-creator').attr('src', profile.imageUrl)
+        }, function(){
+          console.log('Profile of creator not found')
+        })
       })
   	} 
 	})
