@@ -46,6 +46,11 @@ $(document).ready(function() {
     }
   })
 
+  $('#btn-consent-participate-disagree').click(function(){
+    window.location.href = 'consent-disagree.html?id=' + consent.uuid
+  })
+  
+
 })
 
 function refreshBadges(consent) {
