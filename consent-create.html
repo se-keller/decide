@@ -62,33 +62,44 @@
       </div>
     </nav>
 
-    <div class="container">
+      <div class="container">
         <div id="consent-create">
 
           <h2>Start a consent decision</h2>
-        
-          <div class="form-group">
-  				  <label for="comment">Proposal:</label>
-  				  <textarea id="txtarea-consent-proposal" class="form-control" rows="3"></textarea>
-          </div>
+          <div class="media">
+            <div class="media-left">
+                <img id="img-consent-creator" class="media-object">
+            </div>
 
-    			<a id="btn-consent-proposal-cancel" type="button" class="btn btn-danger" href="index.html">
-      				<span class="glyphicon glyphicon glyphicon-remove-circle" aria-hidden="true"></span>
-      					Cancel
-      		</a>
+            <div class="media-body">
+              
+              <h4 class="media-heading">Proposal</h4>
+              
+              <div class="form-group">
+                <label for="comment">Proposal:</label>
+                <textarea id="txtarea-consent-proposal" class="form-control" rows="3"></textarea>
+              </div>
+              
+              <a id="btn-consent-proposal-cancel" type="button" class="btn btn-danger" href="index.html">
+                <span class="glyphicon glyphicon glyphicon-remove-circle" aria-hidden="true"></span>
+                    Cancel
+              </a>
 
-    			<div class="btn-group pull-right" role="group" aria-label="Vote">
-      				<button id="btn-consent-proposal-accept" type="button" class="btn btn-default disabled">
-      					<span class="glyphicon glyphicon glyphicon-thumbs-up gly-rotate-270" aria-hidden="true"></span>
-      					Accept
-      				</button> 
-      				<button id="btn-consent-proposal-agree" type="button" class="btn btn-primary disabled">
-      					<span class="glyphicon glyphicon glyphicon-thumbs-up" aria-hidden="true"></span>
-      					Agree
-      				</button>
-    			</div>
+              <div class="btn-group pull-right" role="group" aria-label="Vote">
+                <button id="btn-consent-proposal-accept" type="button" class="btn btn-default disabled">
+                  <span class="glyphicon glyphicon glyphicon-thumbs-up gly-rotate-270" aria-hidden="true"></span>
+                  Accept
+                </button> 
+                <button id="btn-consent-proposal-agree" type="button" class="btn btn-primary disabled">
+                  <span class="glyphicon glyphicon glyphicon-thumbs-up" aria-hidden="true"></span>
+                  Agree
+                </button>
+              </div> 
+
+            </div>
+          </div> 
         </div>
-    </div>
+      </div>
 
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
