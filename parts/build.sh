@@ -1,3 +1,5 @@
+while sleep 5;
+do
 echo
 
 set -e
@@ -45,4 +47,5 @@ cat head.part.html participate/scripts.part.html close-head.part.html navigation
 checkIfCreated $file
 
 echo 
+done
 
