@@ -17,7 +17,7 @@ $(document).ready(function() {
         $('#p-consent-participate-current-decision').html(consent.currentProposal().replace(/(?:\r\n|\r|\n)/g, '<br />'))
         refreshBadges(consent)
         refreshButtons(consent)
-        profileRepositry.find(consent.creator(), function(profile){
+        profileRepository.find(consent.creator(), function(profile){
           $('#img-consent-participate-creator').attr('src', profile.imageUrl)
         }, function(){
           console.log('Profile of creator not found')
