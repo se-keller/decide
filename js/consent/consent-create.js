@@ -11,7 +11,7 @@ $(document).ready(function() {
 	var login = new Login()
   login.login(function(){
     profile = new Profile()
-    $('#img-consent-participate-creator').attr('src', profile.imageUrl)
+    $('#img-consent-creator').attr('src', profile.imageUrl)
   })
 
 	$('#txtarea-consent-proposal').on('input propertychange paste', function() {
