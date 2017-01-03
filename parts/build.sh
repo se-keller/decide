@@ -36,6 +36,11 @@ remove $file
 cat head.part.html consent/scripts.part.html close-head.part.html navigation.part.html consent/consent-participate.part.html close-body.part.html > $file
 checkIfCreated $file
 
+file="../consent-disagree.html"
+remove $file
+cat head.part.html consent/scripts.part.html close-head.part.html navigation.part.html consent/consent-disagree.part.html close-body.part.html > $file
+checkIfCreated $file
+
 file="../share.html"
 remove $file
 cat head.part.html share/scripts.part.html close-head.part.html navigation.part.html share/share.part.html close-body.part.html > $file
