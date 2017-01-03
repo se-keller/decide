@@ -23,8 +23,8 @@ $(document).ready(function() {
     if(isEnabled('#btn-consent-participate-agree')) {
       consent.agree(profile.email)
       consentRepository.persist(consent, function(){
-        refreshBadges()
-        refreshButtons()
+        refreshBadges(consent)
+        refreshButtons(consent)
       })
     }
   })
@@ -33,8 +33,8 @@ $(document).ready(function() {
     if(isEnabled('#btn-consent-participate-accept')) {
       consent.accept(profile.email)
       consentRepository.persist(consent, function(){
-        refreshBadges()
-        refreshButtons()
+        refreshBadges(consent)
+        refreshButtons(consent)
       })
     }
   })
