@@ -23,16 +23,10 @@ $(document).ready(function() {
   })
 
   $('#txtarea-consent-disagree-proposal').on('input propertychange paste', function() {
-    disableOn($('#txtarea-consent-disagree-reason').val()==="" || $('#txtarea-consent-disagree-proposal').val()==="", 
+    disableOn($('#txtarea-consent-disagree-proposal').val()==="", 
       ['#btn-consent-proposal-disagree-accept',
       '#btn-consent-proposal-disagree-agree'])
-	});
-
-  $('#txtarea-consent-disagree-reason').on('input propertychange paste', function() {
-    disableOn($('#txtarea-consent-disagree-reason').val()==="" || $('#txtarea-consent-disagree-proposal').val()==="", 
-      ['#btn-consent-proposal-disagree-accept',
-      '#btn-consent-proposal-disagree-agree'])
-	});
+	})
   
 	$('#btn-consent-proposal-disagree-accept').click(function(){
     if(isEnabled('#btn-consent-proposal-disagree-accept')) {
@@ -42,7 +36,7 @@ $(document).ready(function() {
             window.location.href = 'consent-participate.html?id=' + consent.uuid
         })  
     }
-	});
+	})
 
 	$('#btn-consent-proposal-disagree-agree').click(function(){
     if(isEnabled('#btn-consent-proposal-disagree-accept')) {
@@ -52,7 +46,7 @@ $(document).ready(function() {
 	          window.location.href = 'consent-participate.html?id=' + consent.uuid
 	        })  
     	}
-  	});
+  	})
 
   	$('#btn-consent-disagree-proposal-cancel').click(function(){
     	window.location.href = 'consent-participate.html?id=' + consent.uuid
