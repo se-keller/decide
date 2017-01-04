@@ -28,8 +28,8 @@ $(document).ready(function() {
   
 	$('#btn-consent-disagree-proposal-accept').click(function(){
     	if(isEnabled('#btn-consent-disagree-proposal-accept')) {
-	      	consent.disagree(profile.email, $('#txtarea-consent-disagree-proposal').text(), $('#txtarea-consent-disagree-reason').text())
-	        consent.accept(profile.email, $('#txtarea-consent-disagree-proposal').val())
+	      	consent.disagree(profile.email, $('#txtarea-consent-disagree-proposal').val(), $('#txtarea-consent-disagree-reason').val())
+	        consent.accept(profile.email)
 	        consentRepository.persist(consent, function(){
 	            window.location.href = 'consent-participate.html?id=' + consent.uuid
 	        })  
@@ -38,8 +38,8 @@ $(document).ready(function() {
 
 	$('#btn-consent-disagree-proposal-agree').click(function(){
     	if(isEnabled('#btn-consent-disagree-proposal-agree')) {
-	    	consent.disagree(profile.email, $('#txtarea-consent-disagree-proposal').text(), $('#txtarea-consent-disagree-reason').text())
-	        consent.agree(profile.email, $('#txtarea-consent-disagree-proposal').val())
+	    	consent.disagree(profile.email, $('#txtarea-consent-disagree-proposal').val(), $('#txtarea-consent-disagree-reason').val())
+	        consent.agree(profile.email)
 	        consentRepository.persist(consent, function(){
 	          window.location.href = 'consent-participate.html?id=' + consent.uuid
 	        })  
