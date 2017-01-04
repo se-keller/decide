@@ -51,4 +51,4 @@ $(document).ready(function() {
   	$('#btn-consent-disagree-proposal-cancel').click(function(){
     	window.location.href = 'consent-participate.html?id=' + consent.uuid
  	})
-}
+})
