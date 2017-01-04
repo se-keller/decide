@@ -22,8 +22,8 @@ $(document).ready(function() {
 
   	$('#txtarea-consent-disagree-proposal').on('input propertychange paste', function() {
 		disableOn($('#txtarea-consent-disagree-proposal').val()==="", 
-	  		['#btn-consent-proposal-disagree-accept',
-	  		'#btn-consent-proposal-disagree-agree'])
+	  		['#btn-consent-disagree-proposal-accept',
+	  		'#btn-consent-disagree-proposal-agree'])
 	})
   
 	$('#btn-consent-disagree-proposal-accept').click(function(){
