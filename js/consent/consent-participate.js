@@ -41,8 +41,8 @@ $(document).ready(function() {
             historyBodyHtml += voteHtml
             var nextVote = consent.votes[index+1] 
             console.log(nextVote.proposal)
-            if(nextVote != undefined && nextVote.proposal != undefined)
-              historyBodyHtml += '</div>'
+            //if(nextVote != undefined && nextVote.proposal != undefined)
+            //  historyBodyHtml += '</div>'
 
             $('#consent-history-body').append(historyBodyHtml)
           })
