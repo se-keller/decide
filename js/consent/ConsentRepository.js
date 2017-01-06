@@ -15,8 +15,6 @@ function ConsentRepository() {
           persistedCallback()
         })
       })
-
-  		
 	}
 
 	this.find = function(id, foundCallback, notFoundCallback) {

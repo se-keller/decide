@@ -22,6 +22,10 @@ $(document).ready(function() {
         }, function(){
           console.log('Profile of creator not found')
         })
+        $.each(consent.votes, function(index, vote){
+          $('#consent-history').append('<p>'+vote.vote+'</p>')
+        })
+          
       })
   	} 
 	})
