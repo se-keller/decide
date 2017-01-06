@@ -23,14 +23,17 @@ $(document).ready(function() {
           console.log('Profile of creator not found')
         })
         $.each(consent.votes, function(index, vote){
-          $('#consent-history').append(voteHtml(vote))
+          createVoteHtml(vote, function(voteHtml){
+            $('#consent-history').append(voteHtml)  
+          })
+          
         })
           
       })
   	} 
 	})
 
-  var voteHtml = function(vote, callback) {
+  var createVoteHtml = function(vote, callback) {
     
     profileRepository.find(vote.voter, function(profile){
     var voteHtml = ''  
@@ -43,6 +46,7 @@ $(document).ready(function() {
       +   vote.vote
       + '</div>'
     +'</div>'
+    callback(voteHtml)
     }, function(){console.log('Profile of creator not found')})
     
   }
