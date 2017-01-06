@@ -1,6 +1,7 @@
 var consentRepository
 var profileRepository
 var profile
+var currentConsent
 
 $(document).ready(function() {
 	var login = new Login()
@@ -14,6 +15,7 @@ $(document).ready(function() {
   	if(urlParamsDecoder.hasParam('id')) {
    		var id = urlParamsDecoder.valueOf('id')
       consentRepository.find(id, function(consent) {
+        currentConsent = consent
         $('#p-consent-participate-current-decision').html(consent.currentProposal().replace(/(?:\r\n|\r|\n)/g, '<br />'))
         refreshBadges(consent)
         refreshButtons(consent)
@@ -39,7 +41,7 @@ $(document).ready(function() {
     var voteHtml = ''  
     voteHtml = '<div class="media">'
       + '<div class="media-left">'
-      +   '<img class="media-object" src="'+profile.imageUrl+'" >'
+      +   '<img class="media-object img-circle" src="'+profile.imageUrl+'" >'
       + '</div>'
       + '<div class="media-body">'
       +   '<h4 class="media-heading">'+profile.givenName+'</h4>'
@@ -71,8 +73,42 @@ $(document).ready(function() {
     }
   })
 
+  $('#txtarea-consent-disagree-proposal').on('input propertychange paste', function() {
+    disableOn($('#txtarea-consent-disagree-proposal').val()==="", 
+        ['#btn-consent-disagree-proposal-accept',
+        '#btn-consent-disagree-proposal-agree'])
+  })
+  
+  $('#btn-consent-disagree-proposal-accept').click(function(){
+      if(isEnabled('#btn-consent-disagree-proposal-accept')) {
+          consent.disagree(profile.email, $('#txtarea-consent-disagree-proposal').val(), $('#txtarea-consent-disagree-reason').val())
+          consent.accept(profile.email)
+          consentRepository.persist(consent, function(){
+              window.location.href = 'consent-participate.html?id=' + consent.uuid
+          })  
+      }
+  })
+
+  $('#btn-consent-disagree-proposal-agree').click(function(){
+      if(isEnabled('#btn-consent-disagree-proposal-agree')) {
+        consent.disagree(profile.email, $('#txtarea-consent-disagree-proposal').val(), $('#txtarea-consent-disagree-reason').val())
+          consent.agree(profile.email)
+          consentRepository.persist(consent, function(){
+            //window.location.href = 'consent-participate.html?id=' + consent.uuid
+            $("#modal-consent-disagree").modal('hide');
+          })  
+      }
+    })
+
+    $('#btn-consent-disagree-proposal-cancel').click(function(){
+      //window.location.href = 'consent-participate.html?id=' + consent.uuid
+      $("#modal-consent-disagree").modal('hide');
+  })
+
   $('#btn-consent-participate-disagree').click(function(){
-    window.location.href = 'consent-disagree.html?id=' + consent.uuid
+    //window.location.href = 'consent-disagree.html?id=' + consent.uuid
+    $('#img-consent-disagree-creator').attr('src', profile.imageUrl)
+    $("#modal-consent-disagree").modal('show');
   })
   
 
