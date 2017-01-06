@@ -6,6 +6,11 @@ body {
   text-align: center;
 }
 
+.media-object {
+  width: 40px;
+  height: 40px;
+}
+
 /* More Rotations: http://bootsnipp.com/snippets/BDN1r */
 .gly-rotate-270 {
   filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3);
