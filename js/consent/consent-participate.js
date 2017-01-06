@@ -1,7 +1,6 @@
 var consentRepository
 var profileRepository
 var profile
-var currentConsent
 
 $(document).ready(function() {
 	var login = new Login()
@@ -11,29 +10,34 @@ $(document).ready(function() {
     consentRepository = new ConsentRepository()
     profileRepository = new ProfileRepository()
 
+    $('#img-consent-disagree-creator').attr('src', profile.imageUrl)
+
 		var urlParamsDecoder = new UrlParamsDecoder(window.location.href)
   	if(urlParamsDecoder.hasParam('id')) {
    		var id = urlParamsDecoder.valueOf('id')
       consentRepository.find(id, function(consent) {
-        currentConsent = consent
-        $('#p-consent-participate-current-decision').html(consent.currentProposal().replace(/(?:\r\n|\r|\n)/g, '<br />'))
+        refreshConsent(consent)  
+      })
+  	} 
+	})
+
+  var refreshConsent = function(consent) {
+    $('#p-consent-participate-current-decision').html(consent.currentProposal().replace(/(?:\r\n|\r|\n)/g, '<br />'))
         refreshBadges(consent)
         refreshButtons(consent)
-        profileRepository.find(consent.creator(), function(profile){
-          $('#img-consent-participate-creator').attr('src', profile.imageUrl)
+        profileRepository.find(consent.creator(), function(creatorProfile){
+          $('#img-consent-participate-creator').attr('src', creatorProfile.imageUrl)
         }, function(){
           console.log('Profile of creator not found')
         })
+        $('#consent-history').empty()
         $.each(consent.votes, function(index, vote){
           createVoteHtml(vote, function(voteHtml){
             $('#consent-history').append(voteHtml)  
           })
           
         })
-          
-      })
-  	} 
-	})
+  }
 
   var createVoteHtml = function(vote, callback) {
     
@@ -84,30 +88,24 @@ $(document).ready(function() {
           consent.disagree(profile.email, $('#txtarea-consent-disagree-proposal').val(), $('#txtarea-consent-disagree-reason').val())
           consent.accept(profile.email)
           consentRepository.persist(consent, function(){
-              window.location.href = 'consent-participate.html?id=' + consent.uuid
+            $("#modal-consent-disagree").modal('hide')
+            refreshConsent(consent)
           })  
       }
   })
 
   $('#btn-consent-disagree-proposal-agree').click(function(){
-      if(isEnabled('#btn-consent-disagree-proposal-agree')) {
-        consent.disagree(profile.email, $('#txtarea-consent-disagree-proposal').val(), $('#txtarea-consent-disagree-reason').val())
-          consent.agree(profile.email)
-          consentRepository.persist(consent, function(){
-            //window.location.href = 'consent-participate.html?id=' + consent.uuid
-            $("#modal-consent-disagree").modal('hide');
-          })  
-      }
-    })
-
-    $('#btn-consent-disagree-proposal-cancel').click(function(){
-      //window.location.href = 'consent-participate.html?id=' + consent.uuid
-      $("#modal-consent-disagree").modal('hide');
+    if(isEnabled('#btn-consent-disagree-proposal-agree')) {
+      consent.disagree(profile.email, $('#txtarea-consent-disagree-proposal').val(), $('#txtarea-consent-disagree-reason').val())
+        consent.agree(profile.email)
+        consentRepository.persist(consent, function(){
+          $("#modal-consent-disagree").modal('hide')
+          refreshConsent(consent)
+        })  
+    }
   })
 
-  $('#btn-consent-participate-disagree').click(function(){
-    //window.location.href = 'consent-disagree.html?id=' + consent.uuid
-    $('#img-consent-disagree-creator').attr('src', profile.imageUrl)
+  $('#btn-consent-participate-disagree').click(function(){    
     $("#modal-consent-disagree").modal('show');
   })
   
