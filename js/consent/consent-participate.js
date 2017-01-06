@@ -43,7 +43,9 @@ $(document).ready(function() {
     
     profileRepository.find(vote.voter, function(profile){
     var voteHtml = ''  
-    voteHtml = '<div class="media">'
+    voteHtml = 
+      '<div class="panel panel-default">'
+      + '<div class="media">'
       + '<div class="media-left">'
       +   '<img class="media-object img-circle" src="'+profile.imageUrl+'" >'
       + '</div>'
@@ -51,6 +53,7 @@ $(document).ready(function() {
       +   '<h4 class="media-heading">'+profile.givenName+'</h4>'
       +   vote.vote
       + '</div>'
+    +'</div>'
     +'</div>'
     callback(voteHtml)
     }, function(){console.log('Profile of creator not found')})
