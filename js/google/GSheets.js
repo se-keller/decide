@@ -53,4 +53,26 @@ function GSheets(spreadsheetId) {
         });
 	}
 
+  this.allRows = function(sheet, callback) {
+    var rows = []
+    gapi.client.sheets.spreadsheets.values.get({
+          spreadsheetId: spreadsheetId,
+          range: sheet + '!A:Z',
+        }).then(function(response) {
+          var range = response.result;
+          if(range.values === undefined) {
+            callback(rows)
+            return
+          } else if (range.values.length > 0) {
+            for (i = 0; i < range.values.length; i++) {
+              var row = range.values[i];
+              rows.push(row)
+            }
+          } 
+          callback(rows)
+        }, function(response) {
+            console.log('Error: ' + response.result.error.message);
+        });
+  }
+
 }

@@ -74,11 +74,31 @@ describe("Consent", function() {
     expect(consent.hasAccepted('accept voter')).toEqual(true)
   });
 
-  it("Accepted proposel is not accepted after disagree", function() {
+  it("accepted proposel is not accepted after disagree", function() {
     consent.accept('voter 1', 'proposal 1')
     consent.disagree('voter 2', 'proposal 2')
     expect(consent.hasAccepted('voter 1')).toEqual(false)
     expect(consent.hasAccepted('voter 2')).toEqual(false)
   });
+
+  it("doesn't know voters who are no participants", function() {
+    expect(consent.isParticipant('voter')).toEqual(false)
+  });
+
+  it("adds the voter of a vote to the list of participants", function() {
+    consent.agree('voter')
+    expect(consent.isParticipant('voter')).toEqual(true)
+  });
+
+  it("can add a participant", function() {
+    consent.addParticipant('participant')
+    expect(consent.isParticipant('participant')).toEqual(true)
+  });
+
+  it("can not find unknown participant", function() {
+    expect(consent.isParticipant('unknown participant')).toEqual(false)
+  });
+
+  
 
 })

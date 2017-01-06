@@ -1,10 +1,9 @@
 function ConsentRepository() {
 	var ID_COLUMN = 0;
 	var JSON_OBJECT_COLUMN = 3;
+  var gSheet = new GSheets(DECIDE_REPOSITORY_GOOGLE_SPREADSHEET_ID)
 
 	this.persist = function(consent, persistedCallback) {
-  		var gSheet = new GSheets(DECIDE_REPOSITORY_GOOGLE_SPREADSHEET_ID)
-
       gSheet.findRow('consents', ID_COLUMN, consent.uuid, function(result, row){
         // found just update
         gSheet.update('consents', row, [ [consent.uuid, consent.creationDate, consent.creatorEMail, JSON.stringify(consent)] ], function(){
@@ -20,9 +19,7 @@ function ConsentRepository() {
   		
 	}
 
-	this.find = function(id, foundCallback) {
-		var gSheet = new GSheets(DECIDE_REPOSITORY_GOOGLE_SPREADSHEET_ID)
-
+	this.find = function(id, foundCallback, notFoundCallback) {
     	gSheet.findRow('consents', ID_COLUMN, id, function(result, row){
     		foundCallback(consentFromJSON(result[JSON_OBJECT_COLUMN]))
     	}, function(){
@@ -31,6 +28,18 @@ function ConsentRepository() {
     	})
 	}
 
+  this.findConsents = function(voter, callback) {
+    var consents = []
+    gSheet.allRows('consents', function(rows){
+      $.each(rows, function(index, row){
+        consent = consentFromJSON(row[JSON_OBJECT_COLUMN])
+        if(consent.isParticipant(voter))
+          consents.push(consent)
+      })
+    })
+    callback(consents)
+  }
+
   var consentFromJSON = function(json) {
     var consentStruct = JSON.parse(json)
         
@@ -38,6 +47,7 @@ function ConsentRepository() {
     consent.type = consentStruct.type
     consent.uuid = consentStruct.uuid
     consent.votes = consentStruct.votes
+    consent.participants = consentStruct.participants
 
     return consent
   }

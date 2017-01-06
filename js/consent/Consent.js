@@ -6,10 +6,22 @@ function Consent() {
 	this.type = 'consent'
 	this.uuid = ''
 	this.votes = []
+	this.participants = []
 	var instance = this
 	
-	this.agree = function(voterEMail, proposal) {
-		addVote(AGREE_ID, voterEMail, proposal)
+	this.agree = function(voter, proposal) {
+		instance.addParticipant(voter)
+		addVote(AGREE_ID, voter, proposal)
+	}
+
+	this.accept = function(voter, proposal) {
+		instance.addParticipant(voter)
+		addVote(ACCEPT_ID, voter, proposal)
+	}
+
+	this.disagree = function(voter, newProposal, reason) { 
+		instance.addParticipant(voter)
+		addVote(DISAGREE_ID, voter, newProposal, reason)
 	}
 
 	this.agreeCount = function() {
@@ -18,14 +30,6 @@ function Consent() {
 
 	this.acceptCount = function() {
 		return voteCount(ACCEPT_ID)	
-	}
-
-	this.accept = function(voter, proposal) {
-		addVote(ACCEPT_ID, voter, proposal)
-	}
-
-	this.disagree = function(voter, newProposal, reason) { 
-		addVote(DISAGREE_ID, voter, newProposal, reason)
 	}
 
 	this.currentProposal = function() {
@@ -60,6 +64,15 @@ function Consent() {
 			return lastVote(voter).vote === ACCEPT_ID
 		}
 		return false 
+	}
+
+	this.isParticipant = function(voter) {
+		return $.inArray(voter, instance.participants) != -1
+	}
+
+	this.addParticipant = function(participant) {
+		instance.participants.push(participant)
+		instance.participants = $.unique(instance.participants)
 	}
 
 	var addVote = function(voteToPush, voter, proposal, reason) {
