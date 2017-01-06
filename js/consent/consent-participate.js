@@ -23,12 +23,29 @@ $(document).ready(function() {
           console.log('Profile of creator not found')
         })
         $.each(consent.votes, function(index, vote){
-          $('#consent-history').append('<p>'+vote.vote+'</p>')
+          $('#consent-history').append(voteHtml(vote))
         })
           
       })
   	} 
 	})
+
+  var voteHtml = function(vote, callback) {
+    
+    profileRepository.find(vote.voter, function(profile){
+    var voteHtml = ''  
+    voteHtml = '<div class="media">'
+      + '<div class="media-left">'
+      +   '<img class="media-object" src="'+profile.imageUrl+'" >'
+      + '</div>'
+      + '<div class="media-body">'
+      +   '<h4 class="media-heading">'+profile.givenName+'</h4>'
+      +   vote.vote
+      + '</div>'
+    +'</div>'
+    }, function(){console.log('Profile of creator not found')})
+    
+  }
 
   $('#btn-consent-participate-agree').click(function(){
     if(isEnabled('#btn-consent-participate-agree')) {
