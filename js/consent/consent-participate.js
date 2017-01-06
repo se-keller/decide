@@ -31,17 +31,20 @@ $(document).ready(function() {
           console.log('Profile of creator not found')
         })
         $('#consent-history-body').empty()
+        var historyBodyHtml = ''
         $.each(consent.votes, function(index, vote){
           createVoteHtml(vote, function(voteHtml){
             if(vote.proposal != undefined) 
-              $('#consent-history-body').append('<div class="panel panel-default">')  
+              historyBodyHtml+='<div class="panel panel-default">'
             
-            $('#consent-history-body').append(voteHtml) 
+            historyBodyHtml += voteHtml
             var nextVote = consent.votes[index+1] 
             if(nextVote != undefined && nextVote.proposal != undefined)
-              $('#consent-history-body').append('</div>')  
+              historyBodyHtml += '</div>'
           })
         })
+        console.log(historyBodyHtml)
+        $('#consent-history-body').append(historyBodyHtml)
   }
 
   var createVoteHtml = function(vote, callback) {
