@@ -47,9 +47,7 @@ $(document).ready(function() {
 function createConsent(callback) { 
   profileRepository.persist(profile, function(){
     var consent = new Consent()
-    consent.creatorEMail = profile.email
     consent.uuid = uuidGenerator.generate()
-    consent.creationDate = new Date()
     callback(consent)
   })
 }
