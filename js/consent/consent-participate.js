@@ -33,17 +33,15 @@ $(document).ready(function() {
         $('#consent-history-body').empty()
         var isFirst = true
         $.each(consent.votes, function(index, vote){
-          if(vote.proposal != undefined) {
-            if(!isFirst)
-              $('#consent-history-body').append('</div>')  
-            $('#consent-history-body').append('<div class="panel panel-default">')  
-            isFirst = false
-          }
-
           createVoteHtml(vote, function(voteHtml){
+            if(vote.proposal != undefined) {
+              if(!isFirst)
+                $('#consent-history-body').append('</div>')  
+              $('#consent-history-body').append('<div class="panel panel-default">')  
+              isFirst = false
+            }
             $('#consent-history-body').append(voteHtml)  
           })
-            
         })
         $('#consent-history-body').append('</div>')
   }
@@ -72,8 +70,7 @@ $(document).ready(function() {
     if(isEnabled('#btn-consent-participate-agree')) {
       consent.agree(profile.email)
       consentRepository.persist(consent, function(){
-        refreshBadges(consent)
-        refreshButtons(consent)
+        refreshConsent(consent)
       })
     }
   })
@@ -82,8 +79,7 @@ $(document).ready(function() {
     if(isEnabled('#btn-consent-participate-accept')) {
       consent.accept(profile.email)
       consentRepository.persist(consent, function(){
-        refreshBadges(consent)
-        refreshButtons(consent)
+        refreshConsent(consent)
       })
     }
   })
