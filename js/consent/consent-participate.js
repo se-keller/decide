@@ -31,8 +31,9 @@ $(document).ready(function() {
           console.log('Profile of creator not found')
         })
         $('#consent-history-body').empty()
-        var historyBodyHtml = ''
+        
         $.each(consent.votes, function(index, vote){
+          var historyBodyHtml = ''
           createVoteHtml(vote, function(voteHtml){
             if(vote.proposal != undefined) 
               historyBodyHtml+='<div class="panel panel-default">'
@@ -41,10 +42,12 @@ $(document).ready(function() {
             var nextVote = consent.votes[index+1] 
             if(nextVote != undefined && nextVote.proposal != undefined)
               historyBodyHtml += '</div>'
+            console.log(historyBodyHtml)
+            $('#consent-history-body').append(historyBodyHtml)
           })
         })
-        console.log(historyBodyHtml)
-        $('#consent-history-body').append(historyBodyHtml)
+        
+        
   }
 
   var createVoteHtml = function(vote, callback) {
