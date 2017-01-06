@@ -31,12 +31,21 @@ $(document).ready(function() {
           console.log('Profile of creator not found')
         })
         $('#consent-history-body').empty()
+        var isFirst = true
         $.each(consent.votes, function(index, vote){
+          if(vote.proposal != undefined) {
+            if(!isFirst)
+              $('#consent-history-body').append('</div>')  
+            $('#consent-history-body').append('<div class="panel panel-default">')  
+            isFirst = false
+          }
+
           createVoteHtml(vote, function(voteHtml){
             $('#consent-history-body').append(voteHtml)  
           })
-          
+            
         })
+        $('#consent-history-body').append('</div>')
   }
 
   var createVoteHtml = function(vote, callback) {
@@ -44,8 +53,8 @@ $(document).ready(function() {
     profileRepository.find(vote.voter, function(profile){
     var voteHtml = ''  
     voteHtml = 
-      '<div class="panel panel-default">'
-      + '<div class="media">'
+
+      '<div class="media">'
       + '<div class="media-left">'
       +   '<img class="media-object img-circle" src="'+profile.imageUrl+'" >'
       + '</div>'
@@ -53,7 +62,6 @@ $(document).ready(function() {
       +   '<h4 class="media-heading">'+profile.givenName+'</h4>'
       +   vote.vote
       + '</div>'
-    +'</div>'
     +'</div>'
     callback(voteHtml)
     }, function(){console.log('Profile of creator not found')})
