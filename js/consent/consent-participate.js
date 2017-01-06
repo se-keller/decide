@@ -40,9 +40,10 @@ $(document).ready(function() {
             
             historyBodyHtml += voteHtml
             var nextVote = consent.votes[index+1] 
+            console.log(nextVote.proposal)
             if(nextVote != undefined && nextVote.proposal != undefined)
               historyBodyHtml += '</div>'
-            console.log(historyBodyHtml)
+
             $('#consent-history-body').append(historyBodyHtml)
           })
         })
