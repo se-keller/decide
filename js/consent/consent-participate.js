@@ -30,10 +30,10 @@ $(document).ready(function() {
         }, function(){
           console.log('Profile of creator not found')
         })
-        $('#consent-history').empty()
+        $('#consent-history-body').empty()
         $.each(consent.votes, function(index, vote){
           createVoteHtml(vote, function(voteHtml){
-            $('#consent-history').append(voteHtml)  
+            $('#consent-history-body').append(voteHtml)  
           })
           
         })
