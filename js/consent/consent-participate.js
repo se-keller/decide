@@ -60,7 +60,7 @@ $(document).ready(function() {
       +     '<img class="media-object img-circle" src="'+profile.imageUrl+'" >'
       +   '</div>'
       +   '<div class="media-body">'
-      +     '<h4 class="media-heading">'+profile.givenName+'<small><i>'+new Date(vote.voteDate).toLocaleDateString()+'</i><small></h4>'
+      +     '<h4 class="media-heading">'+profile.givenName+' <small><i>'+new Date(vote.voteDate).toLocaleString()+'</i></small></h4>'
       +     vote.vote
       +   '</div>'
       +  '</div>'
