@@ -1,4 +1,5 @@
 function ConsentRepository() {
+  var cache = {}
 	var ID_COLUMN = 0;
 	var JSON_OBJECT_COLUMN = 1;
   var gSheet = new GSheets(DECIDE_REPOSITORY_GOOGLE_SPREADSHEET_ID)
@@ -7,23 +8,32 @@ function ConsentRepository() {
       gSheet.findRow('consents', ID_COLUMN, consent.uuid, function(result, row){
         // found just update
         gSheet.update('consents', row, [ [consent.uuid, JSON.stringify(consent)] ], function(){
+          cache[consent.uuid] = consent
           persistedCallback()
         })
       }, function(){
         // not found append
         gSheet.append('consents', [ [consent.uuid, JSON.stringify(consent)] ], function(){
+          cache[consent.uuid] = consent
           persistedCallback()
         })
       })
 	}
 
 	this.find = function(id, foundCallback, notFoundCallback) {
-    	gSheet.findRow('consents', ID_COLUMN, id, function(result, row){
-    		foundCallback(consentFromJSON(result[JSON_OBJECT_COLUMN]))
-    	}, function(){
-    		console.log('Consent decision not found')
+      if(id in cache) {
+        foundCallback(cache[id])
+      } else {
+        gSheet.findRow('consents', ID_COLUMN, id, function(result, row){
+        var consent = consentFromJSON(result[JSON_OBJECT_COLUMN])
+        cache[consent.uuid] = consent
+        foundCallback(consent)
+      }, function(){
+        console.log('Consent decision not found')
         notFoundCallback()
-    	})
+      })  
+      }
+    	
 	}
 
   this.findConsents = function(voter, callback) {
