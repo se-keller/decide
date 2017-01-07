@@ -23,22 +23,21 @@ $(document).ready(function() {
 
   var refreshConsent = function(consent) {
     $('#p-consent-participate-current-decision').html(consent.currentProposal().replace(/(?:\r\n|\r|\n)/g, '<br />'))
-        refreshBadges(consent)
-        refreshButtons(consent)
-        profileRepository.find(consent.creator(), function(creatorProfile){
-          $('#img-consent-participate-creator').attr('src', creatorProfile.imageUrl)
-        }, function(){
-          console.log('Profile of creator not found')
-        })
-        $('#consent-history-body').empty()
-        
-        $.each(consent.votes, function(index, vote){
-          createVoteHtml(vote, function(voteHtml){
-            $('#consent-history-body').append(voteHtml)
-          })
-        })
-        
-        
+    $('#h-consent-participate').append(' <small><i>'+new Date(consent.currentProposalDate()).toLocaleString()+'</i></small>)
+    refreshBadges(consent)
+    refreshButtons(consent)
+    profileRepository.find(consent.creator(), function(creatorProfile){
+      $('#img-consent-participate-creator').attr('src', creatorProfile.imageUrl)
+    }, function(){
+      console.log('Profile of creator not found')
+    })
+    $('#consent-history-body').empty()
+    
+    $.each(consent.votes, function(index, vote){
+      createVoteHtml(vote, function(voteHtml){
+        $('#consent-history-body').append(voteHtml)
+      })
+    })
   }
 
   var createVoteHtml = function(vote, callback) {

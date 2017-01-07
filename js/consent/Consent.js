@@ -42,6 +42,16 @@ function Consent() {
 		return proposal
 	}
 
+	this.currentProposalDate = function() {
+		var date
+		$.each(instance.votes, function(index, vote){
+			if(vote.proposal != undefined)
+				date = vote.voteDate
+			
+		})
+		return date
+	}
+
 	this.creator = function() {
 		var currentCreator = ''
 		$.each(instance.votes, function(index, vote){
