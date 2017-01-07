@@ -53,7 +53,7 @@ $(document).ready(function() {
     } 
 
     if(vote.vote !== 'disagree' && vote.proposal != undefined) {
-      voteHtml = '<div class="panel panel-danger">'
+      voteHtml = '<div class="panel panel-default">'
       + '<div class="panel-heading">'
       +   '<h3 class="panel-title">Initial proposal</h3>'
       + '</div>'
