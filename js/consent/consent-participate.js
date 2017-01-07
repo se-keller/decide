@@ -49,8 +49,9 @@ $(document).ready(function() {
       voteHtml = '<div class="panel panel-danger">'
     else
       voteHtml = '<div class="panel panel-default">'
+    
     voteHtml += 
-      + '<div class="panel-body">'
+        '<div class="panel-body">'
       +  '<div class="media">'
       +   '<div class="media-left">'
       +     '<img class="media-object img-circle" src="'+profile.imageUrl+'" >'
