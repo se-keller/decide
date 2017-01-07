@@ -23,12 +23,12 @@ $(document).ready(function() {
 
   var refreshConsent = function(consent) {
     $('#p-consent-participate-current-decision').html(consent.currentProposal().replace(/(?:\r\n|\r|\n)/g, '<br />'))
-    $('#h-consent-participate').empty()
-    $('#h-consent-participate').append('Proposal <small><i>'+new Date(consent.currentProposalDate()).toLocaleString()+'</i></small>')
     refreshBadges(consent)
     refreshButtons(consent)
     profileRepository.find(consent.creator(), function(creatorProfile){
       $('#img-consent-participate-creator').attr('src', creatorProfile.imageUrl)
+      $('#h-consent-participate').empty()
+    $('#h-consent-participate').append(creatorProfile.givenName+ ' <small><i>'+new Date(consent.currentProposalDate()).toLocaleString()+'</i></small>')
     }, function(){
       console.log('Profile of creator not found')
     })
