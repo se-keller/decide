@@ -78,7 +78,7 @@ $(document).ready(function() {
       
 
       if(vote.reason!=undefined) {
-        voteHtml += '<b>Reason</b><br/>'+vote.proposal+'<br/><br/>'
+        voteHtml += '<b>Reason</b><br/>'+vote.reason+'<br/><br/>'
       }
 
       if(vote.vote === 'disagree') {
