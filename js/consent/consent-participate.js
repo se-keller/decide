@@ -75,7 +75,17 @@ $(document).ready(function() {
       if(vote.vote === 'disagree')
         voteHtml += '<div><span class="glyphicon glyphicon glyphicon-thumbs-down" aria-hidden="true"></span></div>'
       
-      if(vote.proposal!=undefined)
+      
+
+      if(vote.reason!=undefined) {
+        voteHtml += '<b>Reason</b><br/>'+vote.proposal<br/><br/>
+      }
+
+      if(vote.vote === 'disagree') {
+        voteHtml += '<b>Proposal</b><br/>'
+      }
+
+      if(vote.proposal!= undefined)
         voteHtml += vote.proposal
 
       voteHtml +=
