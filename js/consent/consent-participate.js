@@ -67,7 +67,13 @@ $(document).ready(function() {
       +   '</div>'
       +   '<div class="media-body">'
       +     '<h4 class="media-heading">'+profile.givenName+' <small><i>'+new Date(vote.voteDate).toLocaleString()+'</i></small></h4>'
-      +     '<p>'+vote.vote+'</p>'
+      
+      if(vote.vote === 'agree')
+        vote.Html += '<p><span class="glyphicon glyphicon glyphicon-thumbs-up" aria-hidden="true"></span></p>'
+      if(vote.vote === 'accept')
+        vote.Html += '<p><span class="glyphicon glyphicon glyphicon-thumbs-up gly-rotate-270" aria-hidden="true"></span></p>'
+      if(vote.vote === 'disagree')
+        vote.Html += '<p><span class="glyphicon glyphicon glyphicon-thumbs-down" aria-hidden="true"></span></p>'
       
       if(vote.proposal!=undefined)
         voteHtml += vote.proposal
