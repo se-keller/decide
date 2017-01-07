@@ -48,7 +48,7 @@ $(document).ready(function() {
     if(vote.vote === 'disagree') {
       voteHtml = '<div class="panel panel-danger">'
       + '<div class="panel-heading">'
-        + '<h3 class="panel-title">New Proposal</h3>'
+        + '<h3 class="panel-title">New proposal</h3>'
       +'</div>'
     } else
       voteHtml = '<div class="panel panel-default">'
@@ -60,7 +60,7 @@ $(document).ready(function() {
       +     '<img class="media-object img-circle" src="'+profile.imageUrl+'" >'
       +   '</div>'
       +   '<div class="media-body">'
-      +     '<h4 class="media-heading">'+profile.givenName+'</h4>'
+      +     '<h4 class="media-heading">'+profile.givenName+'<small><i>'+vote.voteDate.toLocaleDateString()+'</i><small></h4>'
       +     vote.vote
       +   '</div>'
       +  '</div>'
