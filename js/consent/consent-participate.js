@@ -45,9 +45,12 @@ $(document).ready(function() {
     
     profileRepository.find(vote.voter, function(profile){
     var voteHtml = ''
-    if(vote.vote === 'disagree')
+    if(vote.vote === 'disagree') {
       voteHtml = '<div class="panel panel-danger">'
-    else
+      + '<div class="panel-heading">'
+        + '<h3 class="panel-title">New Proposal</h3>'
+      +'</div>'
+    } else
       voteHtml = '<div class="panel panel-default">'
     console.log(vote.vote)
     voteHtml += 
