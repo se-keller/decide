@@ -51,6 +51,6 @@ var createVoteHtml = function(vote, profile) {
 
       if(vote.proposal != undefined)
         voteHtml += '</div>'
-    return voterHtml
+    return voteHtml
     
   }
