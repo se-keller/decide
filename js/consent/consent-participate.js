@@ -69,11 +69,11 @@ $(document).ready(function() {
       +     '<h4 class="media-heading">'+profile.givenName+' <small><i>'+new Date(vote.voteDate).toLocaleString()+'</i></small></h4>'
       
       if(vote.vote === 'agree')
-        vote.Html += '<div><span class="glyphicon glyphicon glyphicon-thumbs-up" aria-hidden="true"></span></div>'
+        voteHtml += '<div><span class="glyphicon glyphicon glyphicon-thumbs-up" aria-hidden="true"></span></div>'
       if(vote.vote === 'accept')
-        vote.Html += '<div><span class="glyphicon glyphicon glyphicon-thumbs-up gly-rotate-270" aria-hidden="true"></span></div>'
+        voteHtml += '<div><span class="glyphicon glyphicon glyphicon-thumbs-up gly-rotate-270" aria-hidden="true"></span></div>'
       if(vote.vote === 'disagree')
-        vote.Html += '<div><span class="glyphicon glyphicon glyphicon-thumbs-down" aria-hidden="true"></span></div>'
+        voteHtml += '<div><span class="glyphicon glyphicon glyphicon-thumbs-down" aria-hidden="true"></span></div>'
       
       if(vote.proposal!=undefined)
         voteHtml += vote.proposal
