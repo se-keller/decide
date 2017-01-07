@@ -33,18 +33,8 @@ $(document).ready(function() {
         $('#consent-history-body').empty()
         
         $.each(consent.votes, function(index, vote){
-          var historyBodyHtml = ''
           createVoteHtml(vote, function(voteHtml){
-            if(vote.proposal != undefined) 
-              historyBodyHtml+='<div class="panel panel-default">'
-            
-            historyBodyHtml += voteHtml
-            var nextVote = consent.votes[index+1] 
-            console.log(nextVote.proposal)
-            //if(nextVote != undefined && nextVote.proposal != undefined)
-            //  historyBodyHtml += '</div>'
-
-            $('#consent-history-body').append(historyBodyHtml)
+            $('#consent-history-body').append(voteHtml)
           })
         })
         
