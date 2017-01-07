@@ -52,6 +52,13 @@ $(document).ready(function() {
       + '</div>'
     } 
 
+    if(vote.vote !== 'disagree' && vote.proposal != undefined) {
+      voteHtml = '<div class="panel panel-danger">'
+      + '<div class="panel-heading">'
+      +   '<h3 class="panel-title">Initial proposal</h3>'
+      + '</div>'
+    }
+
     voteHtml += 
         '<div class="panel-body">'
       +  '<div class="media">'
@@ -70,7 +77,7 @@ $(document).ready(function() {
       +  '</div>'
       + '</div>'
 
-      if(vote.vote === 'disagree')
+      if(vote.proposal != undefined)
         voteHtml += '</div>'
     callback(voteHtml)
     }, function(){console.log('Profile of creator not found')})
