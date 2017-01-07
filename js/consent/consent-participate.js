@@ -23,7 +23,7 @@ $(document).ready(function() {
 
   var refreshConsent = function(consent) {
     $('#p-consent-participate-current-decision').html(consent.currentProposal().replace(/(?:\r\n|\r|\n)/g, '<br />'))
-    $('#h-consent-participate').append(' <small><i>'+new Date(consent.currentProposalDate()).toLocaleString()+'</i></small>)
+    $('#h-consent-participate').append(' <small><i>'+new Date(consent.currentProposalDate()).toLocaleString()+'</i></small>')
     refreshBadges(consent)
     refreshButtons(consent)
     profileRepository.find(consent.creator(), function(creatorProfile){
@@ -47,11 +47,11 @@ $(document).ready(function() {
     if(vote.vote === 'disagree') {
       voteHtml = '<div class="panel panel-danger">'
       + '<div class="panel-heading">'
-        + '<h3 class="panel-title">New proposal</h3>'
-      +'</div>'
-    } else
+      +   '<h3 class="panel-title">New proposal</h3>'
+      + '</div>'
+    } else {
       voteHtml = '<div class="panel panel-default">'
-    console.log(vote.vote)
+    }
     voteHtml += 
         '<div class="panel-body">'
       +  '<div class="media">'
