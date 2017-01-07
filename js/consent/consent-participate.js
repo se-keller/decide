@@ -35,9 +35,12 @@ $(document).ready(function() {
     $('#consent-history-body').empty()
     
     $.each(consent.votes, function(index, vote){
-      createVoteHtml(vote, function(voteHtml){
-        $('#consent-history-body').append(voteHtml)
+      profileRepository.find(vote.voter, function(profile){
+        $('#consent-history-body').append(createVoteHtml(vote, profile))
+      }, function() {
+        console.log('Profile of voter not found')
       })
+      
     })
   }
 
@@ -96,7 +99,7 @@ $(document).ready(function() {
       if(vote.proposal != undefined)
         voteHtml += '</div>'
     callback(voteHtml)
-    }, function(){console.log('Profile of creator not found')})
+    }, function(){console.log('Profile of voter not found')})
     
   }
 
