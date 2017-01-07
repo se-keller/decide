@@ -77,7 +77,7 @@ $(document).ready(function() {
       
       
 
-      if(vote.reason!=undefined) {
+      if(vote.reason!=undefined && vote.reason !== '') {
         voteHtml += '<b>Reason</b><br/>'+vote.reason+'<br/><br/>'
       }
 
