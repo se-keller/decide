@@ -8,6 +8,6 @@ var DECIDE_REPOSITORY_GOOGLE_SPREADSHEET_ID = '1bsPVDw_DKoByu3_y8bn3pQ_VAF8Mr8QJ
 
 $(document).ready(function() {
 	$('#nav-login-logout').click(function(){
-    	new Login().logout()
+    	new Login().logout(function(){})
   	})
 })
