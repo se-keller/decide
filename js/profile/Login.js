@@ -11,7 +11,7 @@ function Login() {
 	}
 
 	this.logout = function(callback) {
-		oauth.logout(function()) {
+		oauth.logout(function(){
 			callback()
 		})
 	}
