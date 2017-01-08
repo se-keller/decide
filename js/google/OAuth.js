@@ -28,11 +28,11 @@ function OAuth() {
   }
 
   this.logout = function(callback) {
-    gapi.load('auth2', function(){
-      gapi.auth2.init({
-        
-        clientId: DECIDE_GOOGLE_API_CLIENT_ID
-        
+    gapi.load('client:auth2', function(){
+      gapi.client.init({
+        apiKey: DECIDE_GOOGLE_API_KEY,
+        clientId: DECIDE_GOOGLE_API_CLIENT_ID,
+        scope: DECIDE_GOOGLE_API_SCOPES
       }).then(function () {
         var signedIn = gapi.auth2.getAuthInstance().isSignedIn.get();
         if(signedIn) {
