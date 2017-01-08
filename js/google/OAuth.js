@@ -32,6 +32,7 @@ function OAuth() {
       gapi.client.init({
         apiKey: DECIDE_GOOGLE_API_KEY,
         clientId: DECIDE_GOOGLE_API_CLIENT_ID,
+        scope: DECIDE_GOOGLE_API_SCOPES
       }).then(function () {
         var signedIn = gapi.auth2.getAuthInstance().isSignedIn.get();
         if(signedIn) {
