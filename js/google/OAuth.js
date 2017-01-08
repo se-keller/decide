@@ -41,11 +41,14 @@ function OAuth() {
               callback()
             }, function(response){
               console.log('Could not log out')
-              noLogoutCallback()
+              noLoginCallback()
             });
         } else {
           callback()
         }
       });  
+    });
   }
+
+  
 }
