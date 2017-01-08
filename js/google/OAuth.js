@@ -26,4 +26,25 @@ function OAuth() {
       });  
     });
   }
+
+  this.logout = function(callback) {
+    gapi.load('client:auth2', function(){
+      
+      }).then(function () {
+        var signedIn = gapi.auth2.getAuthInstance().isSignedIn.get();
+        if(signedIn) {
+          gapi.auth2.getAuthInstance().signOut().then(
+            function(response){
+              console.log("Log out successful")
+              callback()
+            }, function(response){
+              console.log('Could not log out')
+              noLogoutCallback()
+            });
+        } else {
+          callback()
+        }
+      });  
+    });
+  }
 }
