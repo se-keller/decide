@@ -45,6 +45,5 @@ function OAuth() {
           callback()
         }
       });  
-    });
   }
 }
