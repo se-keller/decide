@@ -1,8 +1,8 @@
 function Login(oauth) {
 
-	this.isLoggedIn = function(isLoggedIn) {
-		oauth.isLoggedIn(function(loggedIn) {
-			isLoggedIn(loggedIn)
+	this.isLoggedIn = function(loggedIn) {
+		oauth.isLoggedIn(function(result) {
+			loggedIn(result)
 		})
 	}
 
