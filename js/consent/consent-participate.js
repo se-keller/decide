@@ -1,15 +1,11 @@
-var consentRepository
-var profileRepository
 var profile
 
 $(document).ready(function() {
-	var login = new Login()
+	
 	login.login(function(){
 
     profile = new Profile()
-    consentRepository = new ConsentRepository()
-    profileRepository = new ProfileRepository()
-
+    
     $('#img-consent-disagree-creator').attr('src', profile.imageUrl)
 
 		var urlParamsDecoder = new UrlParamsDecoder(window.location.href)

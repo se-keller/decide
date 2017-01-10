@@ -1,14 +1,7 @@
-var uuidGenerator
-var consentRepository
-var profileRepository
 var profile
 
 $(document).ready(function() {
-  uuidGenerator = new UUID()
-  consentRepository = new ConsentRepository()
-  profileRepository = new ProfileRepository()
 
-	var login = new Login()
   login.login(function(){
     profile = new Profile()
     $('#img-consent-creator').attr('src', profile.imageUrl)

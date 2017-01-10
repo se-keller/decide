@@ -3,7 +3,7 @@ describe("ConsentRepository", function() {
   var repository
 
   beforeEach(function() {
-    repository = new ConsentRepository()
+    repository = new ConsentRepository(new GSheets())
   });
 
   it("can find persisted consent", function() {

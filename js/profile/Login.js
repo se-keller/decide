@@ -1,8 +1,4 @@
-var oauth
-var profileRepository
-function Login() {
-	oauth = new OAuth()
-	profileRepository = new ProfileRepository()
+function Login(oauth) {
 
 	this.login = function(callback) {
 		oauth.login(function(){
