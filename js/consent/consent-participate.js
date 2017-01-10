@@ -82,11 +82,11 @@ function refreshConsent(consent) {
     }, function(){
       console.log('Profile of creator not found')
     })
-    $('#consent-history-body').empty()
+    $('#consent-log-body').empty()
     
     $.each(consent.votes, function(index, vote){
       profileRepository.find(vote.voter, function(profile){
-        $('#consent-history-body').append(createVoteHtml(vote, profile))
+        $('#consent-log-body').append(createVoteHtml(vote, profile))
       }, function() {
         console.log('Profile of voter not found')
       })

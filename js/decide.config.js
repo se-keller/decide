@@ -1,4 +1,4 @@
-console.log('TEST logout 8')
+console.log('TEST login 1')
 var DECIDE_GOOGLE_API_KEY = 'AIzaSyDbR2kJv9QUCbSRPOPt3R7v31NCquDEz7w'
 var DECIDE_GOOGLE_API_CLIENT_ID = '847560978980-gj7ac8oo7h5spk4uupdko3j865aon6hu.apps.googleusercontent.com'
 var DECIDE_GOOGLE_API_SCOPES = 'https://www.googleapis.com/auth/spreadsheets profile'
@@ -14,6 +14,10 @@ var profileRepository = new ProfileRepository(gSheet)
 var uuidGenerator = new UUID()
 
 $(document).ready(function() {
+	login.isLoggedIn(function(isLoggedIn){
+		console.log('logged in = ' + isLoggedIn)
+	})
+
 	$('#nav-login-logout').click(function(){
     	new Login().logout(function(){})
   	})

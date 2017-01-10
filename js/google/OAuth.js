@@ -51,5 +51,16 @@ function OAuth() {
     });
   }
 
+  this.isLoggedIn = function(loggedIn) {
+    gapi.load('auth2', function(){
+      gapi.auth2.init({
+        clientId: DECIDE_GOOGLE_API_CLIENT_ID
+      }).then(function () {
+        var signedIn = gapi.auth2.getAuthInstance().isSignedIn.get();
+        loggedIn(signedIn)
+      });  
+    });
+  }
+
   
 }
