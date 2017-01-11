@@ -7,7 +7,7 @@ $(document).ready(function() {
     		if(loggedIn) {
     			window.location.href = 'consent-create.html'
     		} else {
-    			login.login(function()) {
+    			login.login(function() {
     				window.location.href = 'consent-create.html'
     			})
     		}
