@@ -7,7 +7,7 @@ function OAuth() {
     initAuthInstance(function() {
       var signedIn = authInstance.isSignedIn.get();
         if(!signedIn) {
-          auchtInstance.signIn().then(
+          authInstance.signIn().then(
             function(response){
               console.log("Log in successful")
               callback()
@@ -44,7 +44,7 @@ function OAuth() {
     initAuthInstance(function(){
       var signedIn = authInstance.isSignedIn.get();
         if(signedIn) {
-          auchtInstance.signOut().then(
+          authInstance.signOut().then(
             function(response){
               console.log("Log out successful")
               callback()
