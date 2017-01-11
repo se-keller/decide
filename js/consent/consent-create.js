@@ -7,17 +7,14 @@ $(document).ready(function() {
       login.login(function(){
         profile = new Profile()
         $('#img-consent-creator').attr('src', profile.imageUrl)
-        $('#nav-user-image').attr('src', profile.imageUrl)
-        $('#nav-profile-user-image').attr('src', profile.imageUrl)
-        $('#nav-profile-user-name').text(profile.givenName + ' ' + profile.familyName)
-        $('#nav-profile-user-email').text(profile.email)
-        $('#nav-drpdwn-menu').removeClass('hidden')
+        refreshNavigation()
       })
     } else {
       $('#nav-drpdwn-menu').addClass('hidden')
       window.location.href = 'index.html?login=consent-create.html'
     }
   })
+
 
   
 
