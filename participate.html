@@ -105,7 +105,26 @@
           <a href="" data-toggle="dropdown" style="color:#777; margin-top: 3px; margin-left: 3px" class="dropdown-toggle"><img id="nav-user-image" class="img-circle" width="25px"/><b class="caret"></b></a>
           <ul class="dropdown-menu">                
             <li>
-              <a id="nav-login-logout" href="" ><span class="glyphicon glyphicon-log-in"></span> Login </a>
+              <div class="panel panel-default">
+                <div class="panel-body">
+                  <div class="media">
+                    <div class="media-left">
+                      <img id="nav-user-image" class="media-object img-circle">
+                    </div>
+
+                    <div class="media-body">
+                      <h4 id='nav-user-name' class="media-heading"></h4>
+                      <p id="nav-user-email"></p>
+                    </div>
+                  </div>  
+                </div>
+                </div>
+                <div class="panel-footer">
+                  <button id="nav-login-logout" class="pull-right"><span class="glyphicon glyphicon-log-out"></span> Logout </button>
+                </div>
+              </div>
+
+              
             </li>
           </ul>
         </li>

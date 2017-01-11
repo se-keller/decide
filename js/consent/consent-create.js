@@ -8,6 +8,8 @@ $(document).ready(function() {
         profile = new Profile()
         $('#img-consent-creator').attr('src', profile.imageUrl)
         $('#nav-user-image').attr('src', profile.imageUrl)
+        $('#nav-user-name').attr('src', profile.givenName + ' ' + profile.familyName)
+        $('#nav-user-email').attr('src', profile.email)
         $('#nav-drpdwn-menu').removeClass('hidden')
       })
     } else {
