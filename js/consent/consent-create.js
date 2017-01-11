@@ -15,9 +15,6 @@ $(document).ready(function() {
     }
   })
 
-  $('#btn-logout').click(function(){
-      console.log("Logout...")
-  });
   
 
 	$('#txtarea-consent-proposal').on('input propertychange paste', function() {
