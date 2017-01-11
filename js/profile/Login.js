@@ -6,10 +6,10 @@ function Login(oauth) {
 		})
 	}
 
-	this.login = function(callback) {
+	this.login = function(callback, noLoginCallback) {
 		oauth.login(function(){
 			callback()	
-		})
+		}, function(){noLoginCallback()})
 	}
 
 	this.logout = function(callback) {
