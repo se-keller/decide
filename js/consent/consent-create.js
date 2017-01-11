@@ -4,13 +4,10 @@ $(document).ready(function() {
 
   login.isLoggedIn(function(loggedIn){
     if(loggedIn) {
-      login.login(function(){
         profile = new Profile()
         $('#img-consent-creator').attr('src', profile.imageUrl)
         refreshNavigation(profile)
-      })
     } else {
-      $('#nav-drpdwn-menu').addClass('hidden')
       window.location.href = 'index.html?login=consent-create.html'
     }
   })

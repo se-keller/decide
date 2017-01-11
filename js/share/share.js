@@ -1,4 +1,11 @@
 $(document).ready(function() {
+
+    login.isLoggedIn(function(loggedIn){
+        if(loggedIn) {
+            refreshNavigation(new Profile())
+        }
+    })
+
 	var urlParamsDecoder = new UrlParamsDecoder(window.location.href)
     if(urlParamsDecoder.hasParams()) {
         var id = urlParamsDecoder.valueOf("id")
