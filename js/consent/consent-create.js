@@ -2,10 +2,18 @@ var profile
 
 $(document).ready(function() {
 
-  login.login(function(){
-    profile = new Profile()
-    $('#img-consent-creator').attr('src', profile.imageUrl)
+  login.isLoggedIn(function(loggedIn){
+    if(loggedIn) {
+      login.login(function(){
+        profile = new Profile()
+        $('#img-consent-creator').attr('src', profile.imageUrl)
+      })
+    } else {
+         window.location.href = 'index.html?login=consent-create.html'
+    }
   })
+
+  
 
 	$('#txtarea-consent-proposal').on('input propertychange paste', function() {
     disableOn($('#txtarea-consent-proposal').val()==="", 
