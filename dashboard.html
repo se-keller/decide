@@ -33,15 +33,7 @@
     <script src="js/utils/UUID.js"></script>
     <script src="js/utils/UrlParamsDecoder.js"></script>
     <script src="js/decide.config.js"></script>
-		<script src="js/profile/Profile.js"></script>
-			
-		<script src="js/consent/Consent.js"></script>
-		<script src="js/consent/ConsentVote.js"></script> 
-	
-		<script src="js/consent/consent-create.js"></script>
-		<script src="js/consent/consent-participate.js"></script>
-		<script src="js/consent/consent-history.js"></script>
-		
+
   </head>
 
   <body>
@@ -129,113 +121,37 @@
   </div>
 </nav>
 
-<div class="container">
-  <div id="consent-participate">
-  	<h2>Participate in this consent decision</h2>    	
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title">Current proposal</h3>
-      </div>
-      <div class="panel-body">
-        <div class="media">
-          
-          <div class="media-left">
-              <img id="img-consent-participate-creator" class="media-object img-circle">
+		<div class="container">
+        	<div id="dashboard">
+            	<h2>Dashboard</h2>
+				      <table class="table table-striped">
+                <thead>
+                  <tr>
+                    <th>Type</th>
+                    <th>Decision</th>
+                    <th>Link</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>consent</td>
+                    <td>"This is very nice..."</td>
+                    <td><a>participate</a></td>
+                  </tr>
+                  <tr>
+                    <td>consent</td>
+                    <td>"This is very nice..."</td>
+                    <td><a>participate</a></td>
+                  </tr>
+                  <tr>
+                    <td>consent</td>
+                    <td>"This is very nice..."</td>
+                    <td><a>participate</a></td>
+                  </tr>
+                </tbody>
+              </table>
           </div>
-
-          <div class="media-body">
-            <h4 id='h-consent-participate' class="media-heading"></h4>
-            <p id="p-consent-participate-current-decision"></p>
-          </div>
-        </div>  
-      </div>
-      <div class="panel-footer">
-        <div class="btn-group" role="group" aria-label="Vote">
-          <button  id="btn-consent-participate-disagree" type="button" class="btn btn-danger">
-           <span class="glyphicon glyphicon glyphicon-thumbs-down" aria-hidden="true"></span>
-          </button> 
-          
-          <button  id="btn-consent-participate-accept" type="button" class="btn btn-default disabled">
-           <span class="glyphicon glyphicon glyphicon-thumbs-up gly-rotate-270" aria-hidden="true"></span>
-          </button>         
-
-          <button id="btn-consent-participate-agree" type="button" class="btn btn-primary disabled">
-           <span class="glyphicon glyphicon glyphicon-thumbs-up" aria-hidden="true"></span>
-          </button>
-        </div>
-      </div>
-    </div>
-
-    <div id="consent-result">
-      <a href="#consent-current-result" data-toggle="collapse">Show current result</a>
-      <div id="consent-current-result" class="collapse">
-      <div class="panel panel-default">
-        <div class="panel-body">
-          <p>
-            <span class="glyphicon glyphicon glyphicon-thumbs-up gly-rotate-270" aria-hidden="true"></span>
-            <span id="bdg-consent-participate-accept" class="badge"></span>
-           </p>
-           <p>
-            <span class="glyphicon glyphicon glyphicon-thumbs-up" aria-hidden="true"></span>
-            <span id="bdg-consent-participate-agree" class="badge"></span>
-           </p>
-        </div>
-      </div>
-      </div>
-    </div> 
-
-    <div id="consent-log">
-      <a href="#consent-log-body" data-toggle="collapse">Show log</a>
-      <div id="consent-log-body" class="collapse"/>
-    </div>    
-	</div>
-
-
-
-  <div id="modal-consent-disagree" class="modal fade">
-      <div class="modal-dialog">
-          <div class="modal-content">
-              
-              <div class="modal-header">
-                  <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                  <h4 class="modal-title">Disagree</h4>
-              </div>
-
-              <div class="modal-body">
-                <div class="media">
-                  <div class="media-left">
-                      <img id="img-consent-disagree-creator" class="media-object img-circle">
-                  </div>
-
-                  <div class="media-body">
-                    <div class="form-group">
-                      <label for="txtarea-consent-disagree-reason">Reason</label>
-                      <textarea id="txtarea-consent-disagree-reason" class="form-control" rows="2"></textarea>
-                    </div>
-                    <div class="form-group">
-                      <label for="txtarea-consent-disagree-proposal">New proposal*</label>
-                      <textarea id="txtarea-consent-disagree-proposal" class="form-control" rows="3"></textarea>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div class="modal-footer">
-                  <div class="btn-group" role="group" aria-label="Vote">
-                    <button id="btn-consent-disagree-proposal-accept" type="button" class="btn btn-default disabled">
-                      <span class="glyphicon glyphicon glyphicon-thumbs-up gly-rotate-270" aria-hidden="true"></span>
-                    </button> 
-                    <button id="btn-consent-disagree-proposal-agree" type="button" class="btn btn-primary disabled">
-                      <span class="glyphicon glyphicon glyphicon-thumbs-up" aria-hidden="true"></span>
-                    </button>
-                  </div> 
-              </div>
-
-          </div>
-      </div>
-  </div>
-
-</div>
+		</div>
 
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->

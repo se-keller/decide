@@ -25,6 +25,10 @@ remove $file
 cat head.part.html scripts.part.html close-head.part.html navigation.part.html index.part.html close-body.part.html > $file
 checkIfCreated $file
 
+file="../dashboard.html"
+remove $file
+cat head.part.html dashboard/scripts.part.html close-head.part.html navigation.part.html dashboard/dashboard.part.html close-body.part.html > $file
+checkIfCreated $file
 
 file="../consent-create.html"
 remove $file
