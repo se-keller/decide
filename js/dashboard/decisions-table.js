@@ -1,6 +1,8 @@
 var createConsentsTableBody = function(consents) {
+	console.log('creating html')
 	var html = ''
 	$.each(consents, function(index, consent){
+		console.log('what a nice consent')
 		if(consent.type === 'consent')
 			html += '<tr>'
 			+    '<td>' + consent.type + '</td>'
