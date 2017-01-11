@@ -44,7 +44,7 @@ function OAuth() {
 
   this.isLoggedIn = function(loggedIn) {
     initAuthInstance(function() {
-      laggedIn(authInstance.isSignedIn.get())
+      loggedIn(authInstance.isSignedIn.get())
     })
   }
 
