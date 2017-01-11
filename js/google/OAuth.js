@@ -51,7 +51,24 @@ function OAuth() {
     });
   }
 
-  
+ /* this.logout = function(callback) {
+    instance.isLoggedIn(function(isLoggedIn) {
+      if(isLoggedIn) {
+          gapi.auth2.getAuthInstance().signOut().then(
+            function(response){
+              console.log("Log out successful")
+              callback()
+            }, function(response){
+              console.log('Could not log out')
+              noLoginCallback()
+            });
+        } else {
+          callback()
+        }
+    })
+
+
+  }*/
 
   this.isLoggedIn = function(loggedIn) {
     gapi.load('auth2', function(){
