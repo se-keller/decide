@@ -16,6 +16,7 @@ $(document).ready(function() {
   })
 
 $('#btn-logout').click(function(){
+  console.log("Lgout...")
       login.logout(function(){
         window.location.href = 'index.html?logout=true'
       })

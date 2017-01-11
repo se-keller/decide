@@ -5,6 +5,11 @@ $(document).ready(function() {
    		redirect = urlParamsDecoder.valueOf('login')
   	} 
 
+  	if(urlParamsDecoder.hasParam('logout')) {
+   		$("#alrt-logout").removeClass("hidden")
+    	$("#alrt-logout").show()
+  	} 
+
   	$('#btn-start-deciding').click(function(){
   		console.log('Login...')
     	login.isLoggedIn(function(loggedIn) {
