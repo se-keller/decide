@@ -1,6 +1,7 @@
 function OAuth() {
  
   var authorized = true;
+  var instance = this
 
   this.login = function(callback) {
     gapi.load('client:auth2', function(){
@@ -28,12 +29,8 @@ function OAuth() {
   }
 
   this.logout = function(callback) {
-    gapi.load('auth2', function(){
-      gapi.auth2.init({
-        client_id: DECIDE_GOOGLE_API_CLIENT_ID
-      }).then(function () {
-        var signedIn = gapi.auth2.getAuthInstance().isSignedIn.get();
-        if(signedIn) {
+    instance.isLoggedIn(function(isLoggedIn) {
+      if(isLoggedIn) {
           gapi.auth2.getAuthInstance().signOut().then(
             function(response){
               console.log("Log out successful")
@@ -45,11 +42,13 @@ function OAuth() {
         } else {
           callback()
         }
-      });  
-    });
+    })
 
 
   }
+
+
+  
 
   this.isLoggedIn = function(loggedIn) {
     gapi.load('auth2', function(){
