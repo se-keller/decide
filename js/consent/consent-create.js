@@ -15,12 +15,9 @@ $(document).ready(function() {
     }
   })
 
-$('#btn-logout').click(function(){
-  console.log("Lgout...")
-      login.logout(function(){
-        window.location.href = 'index.html?logout=true'
-      })
-    })
+  $('#btn-logout').click(function(){
+      console.log("Logout...")
+  });
   
 
 	$('#txtarea-consent-proposal').on('input propertychange paste', function() {
