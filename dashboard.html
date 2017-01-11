@@ -33,7 +33,11 @@
     <script src="js/utils/UUID.js"></script>
     <script src="js/utils/UrlParamsDecoder.js"></script>
     <script src="js/decide.config.js"></script>
-
+		<script src="js/dashboard/dashboard.js"></script>
+		<script src="js/dashboard/decisions-table.js"></script> 
+	
+		<script src="js/consent/Consent.js"></script>
+		<script src="js/consent/ConsentVote.js"></script>
   </head>
 
   <body>
@@ -124,6 +128,17 @@
 		<div class="container">
         	<div id="dashboard">
             	<h2>Dashboard</h2>
+
+              <div class="btn-group">
+                <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <span class="glyphicon  glyphicon-edit" aria-hidden="true"></span>
+                  Create new decision <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu">
+                  <li><a href="#">Consent</a></li>
+                </ul>
+              </div>
+
 				      <table class="table table-striped">
                 <thead>
                   <tr>
