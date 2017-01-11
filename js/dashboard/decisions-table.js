@@ -1,3 +1,3 @@
-var createConsentsTable = function() {
+var createConsentsTableBody = function() {
 
 }

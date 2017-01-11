@@ -5,7 +5,7 @@ $(document).ready(function() {
     	var profile = new Profile()
         refreshNavigation(profile)
         consentRepository.findConsents(profile.email, function(consents){
-        	createConsentsTable(consents)
+        	console.log(createConsentsTableBody(consents))
         })
     } else {
       window.location.href = 'index.html?login=dashboard.html'
