@@ -1,5 +1,5 @@
 var createConsentsTableBody = function(consents) {
-	console.log('creating html')
+	console.log(consents)
 	var html = ''
 	$.each(consents, function(index, consent){
 		console.log('what a nice consent')
