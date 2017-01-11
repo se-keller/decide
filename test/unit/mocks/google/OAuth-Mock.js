@@ -6,7 +6,7 @@ function OAuth() {
     callback(isLoggedIn)
   }
 
-  this.login = function(callback) {
+  this.login = function(callback, noLoginCallback) {
   	isLoggedIn = true
     callback()
   }
