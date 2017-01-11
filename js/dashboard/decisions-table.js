@@ -9,4 +9,5 @@ var createConsentsTableBody = function(consents) {
 			+ '</td>'
 		
 	})
+	return html
 }
