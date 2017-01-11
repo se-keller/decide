@@ -15,7 +15,11 @@ $(document).ready(function() {
     }
   })
 
-
+$('#btn-logout').click(function(){
+      login.logout(function(){
+        window.location.href = 'index.html?logout=true'
+      })
+    })
   
 
 	$('#txtarea-consent-proposal').on('input propertychange paste', function() {
