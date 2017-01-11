@@ -7,9 +7,12 @@ $(document).ready(function() {
       login.login(function(){
         profile = new Profile()
         $('#img-consent-creator').attr('src', profile.imageUrl)
+        $('#nav-user-image').attr('src', profile.imageUrl)
+        $('#nav-drpdwn-menu').removeClass('hidden')
       })
     } else {
-         window.location.href = 'index.html?login=consent-create.html'
+      $('#nav-drpdwn-menu').addClass('hidden')
+      window.location.href = 'index.html?login=consent-create.html'
     }
   })
 
