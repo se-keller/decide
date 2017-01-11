@@ -14,9 +14,9 @@ var profileRepository = new ProfileRepository(gSheet)
 var uuidGenerator = new UUID()
 
 $(document).ready(function() {
-	login.isLoggedIn(function(isLoggedIn){
-		console.log('logged in = ' + isLoggedIn)
-	})
+	//login.isLoggedIn(function(isLoggedIn){
+	//	console.log('logged in = ' + isLoggedIn)
+	//})
 
 	$('#nav-login-logout').click(function(){
     	login.logout(function(){})
