@@ -22,7 +22,7 @@ checkIfCreated() {
 
 file="../index.html"
 remove $file
-cat head.part.html close-head.part.html navigation.part.html index.part.html close-body.part.html > $file
+cat head.part.html scripts.part.html close-head.part.html navigation.part.html index.part.html close-body.part.html > $file
 checkIfCreated $file
 
 
