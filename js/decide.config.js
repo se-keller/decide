@@ -1,4 +1,4 @@
-console.log('TEST login 8')
+console.log('TEST login 9')
 var DECIDE_GOOGLE_API_KEY = 'AIzaSyDbR2kJv9QUCbSRPOPt3R7v31NCquDEz7w'
 var DECIDE_GOOGLE_API_CLIENT_ID = '847560978980-gj7ac8oo7h5spk4uupdko3j865aon6hu.apps.googleusercontent.com'
 var DECIDE_GOOGLE_API_SCOPES = 'https://www.googleapis.com/auth/spreadsheets profile'
@@ -12,11 +12,3 @@ var login = new Login(oauth)
 var consentRepository = new ConsentRepository(gSheet)
 var profileRepository = new ProfileRepository(gSheet)
 var uuidGenerator = new UUID()
-
-$(document).ready(function() {
-	
-
-	$('#nav-login-logout').click(function(){
-    	login.logout(function(){})
-  	})
-})
