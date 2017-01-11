@@ -1,7 +1,6 @@
 var profile
 
 $(document).ready(function() {
-	
   login.isLoggedIn(function(loggedIn){
     if(loggedIn) {
         profile = new Profile()
@@ -19,10 +18,6 @@ $(document).ready(function() {
       window.location.href = 'index.html?login='+window.location.href
     }
   })
-
-	
-
-  
 
   $('#btn-consent-participate-agree').click(function(){
     if(isEnabled('#btn-consent-participate-agree')) {
