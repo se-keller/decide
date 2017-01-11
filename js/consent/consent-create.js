@@ -7,7 +7,7 @@ $(document).ready(function() {
       login.login(function(){
         profile = new Profile()
         $('#img-consent-creator').attr('src', profile.imageUrl)
-        refreshNavigation()
+        refreshNavigation(profile)
       })
     } else {
       $('#nav-drpdwn-menu').addClass('hidden')
