@@ -2,20 +2,25 @@ var profile
 
 $(document).ready(function() {
 	
-	login.login(function(){
+  login.isLoggedIn(function(loggedIn){
+    if(loggedIn) {
+        profile = new Profile()
+        refreshNavigation(profile)
+        $('#img-consent-disagree-creator').attr('src', profile.imageUrl)
 
-    profile = new Profile()
-    
-    $('#img-consent-disagree-creator').attr('src', profile.imageUrl)
+        var urlParamsDecoder = new UrlParamsDecoder(window.location.href)
+        if(urlParamsDecoder.hasParam('id')) {
+          var id = urlParamsDecoder.valueOf('id')
+          consentRepository.find(id, function(consent) {
+            refreshConsent(consent)  
+          })
+        } 
+    } else {
+      window.location.href = 'index.html?login='+window.location.href
+    }
+  })
 
-		var urlParamsDecoder = new UrlParamsDecoder(window.location.href)
-  	if(urlParamsDecoder.hasParam('id')) {
-   		var id = urlParamsDecoder.valueOf('id')
-      consentRepository.find(id, function(consent) {
-        refreshConsent(consent)  
-      })
-  	} 
-	})
+	
 
   
 
