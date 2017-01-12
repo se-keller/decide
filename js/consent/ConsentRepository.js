@@ -39,8 +39,6 @@ function ConsentRepository(gSheet) {
     var consents = []
 
     gSheet.allRows('consents', function(rows){
-      console.log(rows)
-      console.log(rows.length)
       $.each(rows, function(index, row){
         consent = consentFromJSON(row[JSON_OBJECT_COLUMN])
         console.log(consent)
@@ -48,6 +46,7 @@ function ConsentRepository(gSheet) {
           consents.push(consent)
       })
     })
+    console.log(consents)
     callback(consents)
   }
 
