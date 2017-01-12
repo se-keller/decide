@@ -5,7 +5,6 @@ $(document).ready(function() {
     	var profile = new Profile()
         refreshNavigation(profile)
         consentRepository.findConsents(profile.email, function(consents){
-        	console.log(consents.length)
         	$('#tbl-consents').empty()
         	$('#tbl-consents').append(createConsentsTableBody(consents))
         })
