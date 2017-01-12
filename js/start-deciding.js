@@ -1,5 +1,5 @@
 $(document).ready(function() {
-	var redirect = 'consent-create.html'
+	var redirect = 'dashboard.html'
 	var urlParamsDecoder = new UrlParamsDecoder(window.location.href)
   	if(urlParamsDecoder.hasParam('login')) {
    		redirect = urlParamsDecoder.valueOf('login')
