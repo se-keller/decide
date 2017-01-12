@@ -61,12 +61,14 @@ function GSheets(spreadsheetId) {
         }).then(function(response) {
           var range = response.result;
           if(range.values === undefined) {
+            console.log('no rows found')
             callback(rows)
             return
           } else if (range.values.length > 0) {
             for (i = 0; i < range.values.length; i++) {
               var row = range.values[i];
               rows.push(row)
+              console.log('row found')
             }
           } 
           callback(rows)
