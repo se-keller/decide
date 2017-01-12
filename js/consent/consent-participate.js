@@ -6,6 +6,8 @@ $(document).ready(function() {
         profile = new Profile()
         refreshNavigation(profile)
         $('#img-consent-disagree-creator').attr('src', profile.imageUrl)
+        $('#img-user-agree').attr('src', profile.imageUrl)
+        $('#img-user-accept').attr('src', profile.imageUrl)
 
         var urlParamsDecoder = new UrlParamsDecoder(window.location.href)
         if(urlParamsDecoder.hasParam('id')) {
@@ -103,11 +105,11 @@ function refreshButtons(consent) {
   disableOn(consent.hasAgreed(profile.email), ['#btn-consent-participate-agree'])
   disableOn(consent.hasAccepted(profile.email), ['#btn-consent-participate-accept']) 
   if(consent.hasAgreed(profile.email)) {
-    $('#btn-consent-participate-agree').text('you')
-    $('#btn-consent-participate-accept').text('')
+    $('#img-user-agree').removeClass('hidden')
+    $('#img-user-accept').addClass('hidden')
   }
   if(consent.hasAccepted(profile.email)) {
-    $('#btn-consent-participate-agree').text('')
-    $('#btn-consent-participate-accept').text('you')
+   $('#img-user-agree').addClass('hidden')
+    $('#img-user-accept').removeClass('hidden')
   }
 }
