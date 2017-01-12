@@ -41,13 +41,12 @@ function ConsentRepository(gSheet) {
     gSheet.allRows('consents', function(rows){
       $.each(rows, function(index, row){
         consent = consentFromJSON(row[JSON_OBJECT_COLUMN])
-        console.log(consent)
-        //if(consent.isParticipant(voter))
+        if(consent.isParticipant(voter))
           consents.push(consent)
       })
+      callback(consents)
     })
-    console.log(consents)
-    callback(consents)
+    
   }
 
   var consentFromJSON = function(json) {
