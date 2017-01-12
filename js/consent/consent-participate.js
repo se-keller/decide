@@ -101,5 +101,13 @@ function refreshBadges(consent) {
 
 function refreshButtons(consent) {
   disableOn(consent.hasAgreed(profile.email), ['#btn-consent-participate-agree'])
-  disableOn(consent.hasAccepted(profile.email), ['#btn-consent-participate-accept'])  
+  disableOn(consent.hasAccepted(profile.email), ['#btn-consent-participate-accept']) 
+  if(consent.hasAgreed(profile.email)) {
+    $('#btn-consent-participate-agree').text('you')
+    $('#btn-consent-participate-accept').text('')
+  }
+  if(consent.hasAccepted(profile.email)) {
+    $('#btn-consent-participate-agree').text('')
+    $('#btn-consent-participate-accept').text('you')
+  }
 }
