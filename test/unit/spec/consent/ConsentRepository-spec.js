@@ -34,7 +34,6 @@ describe("ConsentRepository", function() {
         })
       })
     })
-    
     expect(equals(foundConsents, [consent1, consent2])).toEqual(true)
   });
 
