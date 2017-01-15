@@ -85,6 +85,10 @@ function Consent() {
 		instance.participants = $.unique(instance.participants)
 	}
 
+	this.removeParticipant = function(participant) {
+		instance.participants.splice( $.inArray(participant, instance.participants), 1 )
+	}
+
 	var addVote = function(voteToPush, voter, proposal, reason) {
 		var vote = new ConsentVote()
 		vote.voter = voter

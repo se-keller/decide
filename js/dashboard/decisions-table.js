@@ -12,7 +12,8 @@ var createConsentsTableBody = function(consents) {
 			html += '<tr>'
 			+    '<td>' + consent.type + '</td>'
 			+    '<td>' + consent.currentProposal() + '</td>'
-			+    '<td><a href="consent-participate.html?id=' + consent.uuid + '"">participate</a></td>'
+			+    '<td><a href="consent-participate.html?id=' + consent.uuid + '">participate</a></td>'
+			+    '<td><a onclick="ignoreConsent('+consent.uuid+')">ignore</a></td>'
 			+ '</td>'
 		
 	})

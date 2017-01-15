@@ -95,6 +95,12 @@ describe("Consent", function() {
     expect(consent.isParticipant('participant')).toEqual(true)
   });
 
+  it("can remove a participant", function() {
+    consent.addParticipant('participant')
+    consent.removeParticipant('participant')
+    expect(consent.isParticipant('participant')).toEqual(false)
+  });
+
   it("can not find unknown participant", function() {
     expect(consent.isParticipant('unknown participant')).toEqual(false)
   });

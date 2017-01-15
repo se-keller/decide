@@ -2,6 +2,7 @@ function ConsentRepository(gSheet) {
   var cache = {}
 	var ID_COLUMN = 0;
 	var JSON_OBJECT_COLUMN = 1;
+  var instance = this
 
 	this.persist = function(consent, persistedCallback) {
       gSheet.findRow('consents', ID_COLUMN, consent.uuid, function(result, row){
@@ -47,6 +48,15 @@ function ConsentRepository(gSheet) {
       callback(consents)
     })
     
+  }
+
+  this.ignoreConsent = function(id, voter, callback) {
+  instance.find(id, function(consent){
+    consent.removeParticipant(voter)
+    instance.persist(consent, function(){
+      callback()
+    })
+    }, function(){/*ignore*/})
   }
 
   var consentFromJSON = function(json) {
