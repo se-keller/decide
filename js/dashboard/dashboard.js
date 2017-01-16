@@ -1,4 +1,5 @@
 var profile
+var ignoreConsentId
 
 $(document).ready(function() {
 
@@ -12,14 +13,23 @@ $(document).ready(function() {
     }
   })
 
-  
+  $('#btn-consent-ignore').click(function(){
+    consentRepository.ignoreConsent(ignoreConsentId, profile.email, function() {
+		refreshDecisionsTable()
+		$('modal-consent-ignore').show('hide')
+	})
+  })
 
+  $('#btn-consent-ignore-cancel').click(function(){
+    $('modal-consent-ignore').show('hide')
+  })
+  
 })
 
 var ignoreConsent = function(id){
-	consentRepository.ignoreConsent(id, profile.email, function() {
-		refreshDecisionsTable()
-	})
+	ignoreConsentId = id
+	$('modal-consent-ignore').show('show')
+	
 }
 
 var refreshDecisionsTable = function() {
