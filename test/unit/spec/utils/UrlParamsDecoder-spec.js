@@ -30,6 +30,11 @@ describe("UrlParamsDecoder", function() {
   it("can retriev a param that has an ampand inside the value", function() {
     var decoder = new UrlParamsDecoder('any.url?param=value?value')
     expect(decoder.valueOf('param')).toEqual('value?value')
+  });
+
+  it("can retriev a param that is a url with params", function() {
+    var decoder = new UrlParamsDecoder('any.url?param=value?subparam=subvalue')
+    expect(decoder.valueOf('param')).toEqual('value?subparam=subvalue')
   }); 
 
 });

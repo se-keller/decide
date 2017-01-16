@@ -20,12 +20,12 @@ var UrlParamsDecoder = function(url) {
 	function decode() {
 		var decodedParams = {}
 		var urlParts = url.split(/\?(.+)/)
-		console.log(urlParts)
+		
 		if(urlParts.length > 1) {
 			var paramPartOfUrl = urlParts[PARAM_POSITION];
 			var paramKeyValuePairs = paramPartOfUrl.split('&')
 			for(var i = 0; i < paramKeyValuePairs.length; i++) {
-				var keyValuePair = paramKeyValuePairs[i].split('=')
+				var keyValuePair = paramKeyValuePairs[i].split(/=(.+)/)
 				decodedParams[keyValuePair[KEY_POSITION]] = keyValuePair[VALUE_POSITION]	
 			}
 		}
