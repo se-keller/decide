@@ -28,6 +28,7 @@ $(document).ready(function() {
 
 var ignoreConsent = function(id){
 	ignoreConsentId = id
+	console.log("show modal")
 	$('modal-consent-ignore').modal('show')
 	
 }
