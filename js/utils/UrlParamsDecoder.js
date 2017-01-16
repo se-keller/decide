@@ -10,11 +10,11 @@ var UrlParamsDecoder = function(url) {
 	}
 
 	this.hasParams = function() {
-		return !jQuery.isEmptyObject(params)
+		return !$.isEmptyObject(params)
 	}
 
 	this.hasParam = function(paramKey) {
-		return !jQuery.isEmptyObject(params) && params[paramKey] !== undefined
+		return !$.isEmptyObject(params) && params[paramKey] !== undefined
 	}
 
 	function decode() {
@@ -24,10 +24,10 @@ var UrlParamsDecoder = function(url) {
 		if(urlParts.length > 1) {
 			var paramPartOfUrl = urlParts[PARAM_POSITION];
 			var paramKeyValuePairs = paramPartOfUrl.split('&')
-			for(var i = 0; i < paramKeyValuePairs.length; i++) {
-				var keyValuePair = paramKeyValuePairs[i].split(/=(.+)/)
-				decodedParams[keyValuePair[KEY_POSITION]] = keyValuePair[VALUE_POSITION]	
-			}
+			$.each(paramKeyValuePairs, function(index, pair) {
+				var keyValuePair = pair.split(/=(.+)/)
+				decodedParams[keyValuePair[KEY_POSITION]] = keyValuePair[VALUE_POSITION]
+			})
 		}
 		return decodedParams
 	}

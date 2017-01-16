@@ -1,4 +1,4 @@
-var createConsentsTableBody = function(consents) {
+var createConsentsTableBody = function(consents, voter) {
 	var html = ''
 	if(consents.length == 0) {
 		html += '<tr>'
@@ -10,7 +10,12 @@ var createConsentsTableBody = function(consents) {
 	$.each(consents, function(index, consent){
 		if(consent.type === 'consent') {
 			var consentIdString = "'" +  consent.uuid + "'"
+
+			var needsInput = '<td style="text-align: center"><a href="consent-participate.html?id=' + consent.uuid + '"><span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span></a></td>'
+			if(!consent.hasVotedOnLastProposal(voter))
+				needsInput = '<td/>'
 			html += '<tr>'
+			+    needsInput
 			+    '<td>' + consent.type + '</td>'
 			+    '<td>' + consent.currentProposal() + '</td>'
 			+    '<td style="text-align: center"><a href="consent-participate.html?id=' + consent.uuid + '"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></a></td>'
