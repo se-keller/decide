@@ -35,6 +35,6 @@ var ignoreConsent = function(id){
 var refreshDecisionsTable = function() {
 	consentRepository.findConsents(profile.email, function(consents){
 		$('#tbl-consents').empty()
-		$('#tbl-consents').append(createConsentsTableBody(consents))
+		$('#tbl-consents').append(createConsentsTableBody(consents, profile.email))
      })
 }

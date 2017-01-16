@@ -63,14 +63,14 @@ function Consent() {
 	}
 
 	this.hasAgreed = function(voter) {
-		if(hasVotedOnLastProposal(voter)) {
+		if(instance.hasVotedOnLastProposal(voter)) {
 			return lastVote(voter).vote === AGREE_ID
 		}
 		return false
 	}
 
 	this.hasAccepted = function(voter) {
-		if(hasVotedOnLastProposal(voter)) {
+		if(instance.hasVotedOnLastProposal(voter)) {
 			return lastVote(voter).vote === ACCEPT_ID
 		}
 		return false 
@@ -107,7 +107,7 @@ function Consent() {
 		})
 		voters = $.unique(voters)
 		$.each(voters, function(index, voter){
-			if(hasVotedOnLastProposal(voter))
+			if(instance.hasVotedOnLastProposal(voter))
 				if(lastVote(voter).vote === voteToCount)
 					count++
 		})
@@ -124,7 +124,7 @@ function Consent() {
 		return lastVote
 	}
 
-	var hasVotedOnLastProposal = function(voter) {
+	this.hasVotedOnLastProposal = function(voter) {
 		var hasVoted = false
 		$.each(instance.votes, function(index, vote){
 			if(vote.voter === voter)
