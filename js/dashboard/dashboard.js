@@ -16,12 +16,12 @@ $(document).ready(function() {
   $('#btn-consent-ignore').click(function(){
     consentRepository.ignoreConsent(ignoreConsentId, profile.email, function() {
 		refreshDecisionsTable()
-		$('modal-consent-ignore').modal('hide')
+		$('#modal-consent-ignore').modal('hide')
 	})
   })
 
   $('#btn-consent-ignore-cancel').click(function(){
-    $('modal-consent-ignore').modal('hide')
+    $('#modal-consent-ignore').modal('hide')
   })
   
 })
@@ -29,7 +29,7 @@ $(document).ready(function() {
 var ignoreConsent = function(id){
 	ignoreConsentId = id
 	console.log("show modal")
-	$('modal-consent-ignore').modal('show')
+	$('#modal-consent-ignore').modal('show')
 	
 }
 
