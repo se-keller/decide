@@ -27,4 +27,9 @@ describe("UrlParamsDecoder", function() {
     expect(decoder.hasParam('param')).toEqual(true)
   }); 
 
+  it("can retriev a param that has an ampand inside the value", function() {
+    var decoder = new UrlParamsDecoder('any.url?param=value?value')
+    expect(decoder.valueOf('param')).toEqual('value?value')
+  }); 
+
 });

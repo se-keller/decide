@@ -19,7 +19,8 @@ var UrlParamsDecoder = function(url) {
 
 	function decode() {
 		var decodedParams = {}
-		var urlParts = url.split('?')
+		var urlParts = url.split(/\?(.+)/)
+		console.log(urlParts)
 		if(urlParts.length > 1) {
 			var paramPartOfUrl = urlParts[PARAM_POSITION];
 			var paramKeyValuePairs = paramPartOfUrl.split('&')
