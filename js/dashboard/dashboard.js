@@ -16,19 +16,19 @@ $(document).ready(function() {
   $('#btn-consent-ignore').click(function(){
     consentRepository.ignoreConsent(ignoreConsentId, profile.email, function() {
 		refreshDecisionsTable()
-		$('modal-consent-ignore').show('hide')
+		$('modal-consent-ignore').modal('hide')
 	})
   })
 
   $('#btn-consent-ignore-cancel').click(function(){
-    $('modal-consent-ignore').show('hide')
+    $('modal-consent-ignore').modal('hide')
   })
   
 })
 
 var ignoreConsent = function(id){
 	ignoreConsentId = id
-	$('modal-consent-ignore').show('show')
+	$('modal-consent-ignore').modal('show')
 	
 }
 
