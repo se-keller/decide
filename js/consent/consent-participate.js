@@ -21,8 +21,7 @@ $(document).ready(function() {
           })
         } 
     } else {
-      console.log(window.location.href)
-      window.location.href = 'index.html?login2='+window.location.href
+      window.location.href = 'index.html?login='+window.location.href
     }
   })
 
