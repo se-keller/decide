@@ -4,6 +4,7 @@ $(document).ready(function() {
   	if(urlParamsDecoder.hasParam('login')) {
    		redirect = urlParamsDecoder.valueOf('login')
   	} 
+  	console.log("redirect=" + redirect)
 
   	if(urlParamsDecoder.hasParam('logout')) {
    		$("#alrt-logout").removeClass("hidden")

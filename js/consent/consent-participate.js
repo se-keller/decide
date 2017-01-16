@@ -13,6 +13,10 @@ $(document).ready(function() {
         if(urlParamsDecoder.hasParam('id')) {
           var id = urlParamsDecoder.valueOf('id')
           consentRepository.find(id, function(consent) {
+            if(!consent.isParticipant()) {
+              consent.addParticipant(profile.email)
+              consentRepository.persist(consent, function() {})
+            }
             refreshConsent(consent)  
           })
         } 
@@ -80,7 +84,7 @@ function refreshConsent(consent) {
     profileRepository.find(consent.creator(), function(creatorProfile){
       $('#img-consent-participate-creator').attr('src', creatorProfile.imageUrl)
       $('#h-consent-participate').empty()
-    $('#h-consent-participate').append(creatorProfile.givenName+ ' <small><i>'+new Date(consent.currentProposalDate()).toLocaleString()+'</i></small>')
+      $('#h-consent-participate').append(creatorProfile.givenName+ ' <small><i>'+new Date(consent.currentProposalDate()).toLocaleString()+'</i></small>')
     }, function(){
       console.log('Profile of creator not found')
     })
