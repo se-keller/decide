@@ -16,9 +16,10 @@ var createConsentsTableBody = function(consents, voter) {
 				needsInput = '<td/>'
 			html += '<tr>'
 			+    needsInput
-			+    '<td>' + consent.type + '</td>'
-			+    '<td>' + consent.currentProposal() + '</td>'
-			+    '<td style="text-align: center"><a href="consent-participate.html?id=' + consent.uuid + '"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></a></td>'
+			//+    '<td>' + consent.type + '</td>'
+			+    '<td><a href="consent-participate.html?id=' + consent.uuid + '">' + consent.currentProposal() + '</a></td>'
+			//+    '<td style="text-align: center"><a href="consent-participate.html?id=' + consent.uuid + '"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></a></td>'
+			+    '<td style="text-align: center"><a href="share.html?id=' + consent.uuid + '"><span class="glyphicon glyphicon-share" aria-hidden="true"></span></a></td>'
 			+    '<td style="text-align: center"><a href="#" onclick="ignoreConsent('+consentIdString+')"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></a></td>'
 			+ '</td>'
 		}
