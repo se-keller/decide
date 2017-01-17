@@ -48,7 +48,7 @@ function OAuth() {
     })
   }
 
-  var initAuthInstance = function(callback) {
+  var initAuthInstance2 = function(callback) {
     if(authInstance === undefined) {
       gapi.load('auth2', function(){
         gapi.auth2.init({
@@ -64,7 +64,21 @@ function OAuth() {
     }
   }
 
-  var initAuthInstance2 = function(callback) {
+  var initAuthInstance = function(callback) {
+    if(authInstance === undefined) {
+        gapi.auth.authorize({
+          client_id: DECIDE_GOOGLE_API_CLIENT_ID,
+          scope: DECIDE_GOOGLE_API_SCOPES
+        }).then(function () {
+          authInstance = gapi.auth2.getAuthInstance()
+          gapi.client.load(DECIDE_GOOGLE_API_DISCOVERY_DOCS).then(callback())
+        })  
+    } else {
+      callback()
+    }
+  }
+
+  var initAuthInstance1 = function(callback) {
     if(authInstance === undefined) {
       gapi.load('client:auth2', function(){
         gapi.client.init({
