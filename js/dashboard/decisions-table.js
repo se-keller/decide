@@ -12,7 +12,7 @@ var createConsentsTableBody = function(consents, voter) {
 			var consentIdString = "'" +  consent.uuid + "'"
 
 			var needsInput = '<td style="text-align: center"><a href="consent-participate.html?id=' + consent.uuid + '"><span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span></a></td>'
-			if(!consent.hasVotedOnLastProposal(voter))
+			if(consent.hasVotedOnLastProposal(voter))
 				needsInput = '<td/>'
 			html += '<tr>'
 			+    needsInput
