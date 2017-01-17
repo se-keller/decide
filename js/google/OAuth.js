@@ -64,7 +64,7 @@ function OAuth() {
     }
   }
 
-  var initAuthInstance1 = function(callback) {
+  var initAuthInstance = function(callback) {
     if(authInstance === undefined) {
       gapi.load('client:auth2', function(){
         gapi.client.init({
