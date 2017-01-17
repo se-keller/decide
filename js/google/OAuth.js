@@ -50,6 +50,22 @@ function OAuth() {
 
   var initAuthInstance = function(callback) {
     if(authInstance === undefined) {
+      gapi.load('auth2', function(){
+        gapi.auth.init({
+          client_id: DECIDE_GOOGLE_API_CLIENT_ID,
+          scope: DECIDE_GOOGLE_API_SCOPES
+        }).then(function () {
+          authInstance = gapi.auth2.getAuthInstance()
+          callback()
+        })  
+      })
+    } else {
+      callback()
+    }
+  }
+
+  var initAuthInstance2 = function(callback) {
+    if(authInstance === undefined) {
       gapi.load('client:auth2', function(){
         gapi.client.init({
           apiKey: DECIDE_GOOGLE_API_KEY,
